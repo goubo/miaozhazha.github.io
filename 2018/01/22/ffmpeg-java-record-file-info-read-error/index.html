@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/stylised-cat-152-213771.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/stylised-cat-144-213771.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;#12288;&amp;#12288;前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。&amp;#12288;&amp;#12288;当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。">
+<meta name="keywords" content="java,ffmpeg,rtmp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过java使用ffmpeg录制rtmp视频流，文件无法读取">
+<meta property="og:url" content="http://blog.goujinbo.com/2018/01/22/ffmpeg-java-record-file-info-read-error/index.html">
+<meta property="og:site_name" content="喵渣渣">
+<meta property="og:description" content="&amp;#12288;&amp;#12288;前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。&amp;#12288;&amp;#12288;当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-06T07:03:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过java使用ffmpeg录制rtmp视频流，文件无法读取">
+<meta name="twitter:description" content="&amp;#12288;&amp;#12288;前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。&amp;#12288;&amp;#12288;当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="喵渣渣" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://blog.goujinbo.com/2018/01/22/ffmpeg-java-record-file-info-read-error/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>通过java使用ffmpeg录制rtmp视频流，文件无法读取 | 喵渣渣</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">喵渣渣</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">个人博客</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.goujinbo.com/2018/01/22/ffmpeg-java-record-file-info-read-error/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="疯喵子">
+      <meta itemprop="description" content="终于想起来这件事情了，给自己个赞">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵渣渣">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">通过java使用ffmpeg录制rtmp视频流，文件无法读取
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-22 00:35:19" itemprop="dateCreated datePublished" datetime="2018-01-22T00:35:19+08:00">2018-01-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-06 15:03:16" itemprop="dateModified" datetime="2018-02-06T15:03:16+08:00">2018-02-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#12288;&#12288;前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。<br>&#12288;&#12288;当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。<a id="more"></a>经过日志分析，这部分文件在使用ffprobe读取时，抛出了<code>Invalid data found when processing input</code>。老司机一看就知道，八成是读取文件信息的时候，写入还没有完成。程序在读取文件时，确定录制是已经停止的，这种小问题，加个延时应该就解决了。于是在调用读取的地方，添加了一个定时。调用停止录制2000毫秒后再读取硬盘上的文件信息。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发现录制应该结束</span></span><br><span class="line">Process cmd = FFmpegProcessUtil.getFFmpegProcessUtil().getRecord(streamName);</span><br><span class="line">cmd.destroy();</span><br><span class="line">vertx.setTimer(<span class="number">2000</span>,id-&gt;&#123;</span><br><span class="line">    FFmpegProbeResult probe = ShellUtil.probe(config.getString(<span class="string">"ffprobe_path"</span>), filePath);</span><br><span class="line">    <span class="comment">//保存文件信息</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>&#12288;&#12288;然而周冬雨眉头一皱，发现事情并不简单。【此处应有图，原谅我图床还没选好😂😂😂】<br>&#12288;&#12288;前两天部门一小哥说录制文件找不到。分析日志仍然是<code>Invalid data found when processing input</code>。感觉我之前的想法确实有点简单了。<br>&#12288;&#12288;而且小哥分析日志后，发现读取错误的文件其实是有共同点的。<br>&#12288;&#12288;这个record程序的流程如下。<br>&#12288;&#12288;使用一个定时器，每秒钟扫描nginx-rtmp端口。发现有数据流就加载到缓存中，提供外部接口，由上层业务系统调用接口控制录制的开始和关闭。ffmpeg录制结束有两个节点。</p>
+<ol>
+<li>上层业务系统调用接口停止录制。</li>
+<li>定时器扫描到nginx端口不存在这个数据流，停止录制。</li>
+</ol>
+<p>&#12288;&#12288;小哥发现：所有读取错误的文件，均是第二种方式停止的录制。<br>&#12288;&#12288;经测试。在使用如下命令转存文件时，及时输入端数据已经终止，ffmpeg进程仍然存在。<br><code>ffmpeg -i rtmp://&lt;ip&gt;/live/streamName -f mp4 test.mp4</code><br>&#12288;&#12288;本地调试代码后发现当定时器检测到nginx端口的流已经不存在时，调用Process.destroy()方法并不能立即终止进程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vertx.setPeriodic(<span class="number">1000</span> * <span class="number">1</span>, <span class="keyword">new</span> RefreshStreamHandler());</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>RefreshStreamHandler.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(Long event)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//其它未失效数据处理</span></span><br><span class="line">    loseMapKey.forEach(streamName -&gt; &#123;</span><br><span class="line">        <span class="comment">//其它处理</span></span><br><span class="line">        <span class="keyword">if</span>(lostMap.get(streamName).getLcFile() != <span class="keyword">null</span>)&#123;</span><br><span class="line">            logger.info(<span class="string">"发现流结束时仍然有录制"</span>);</span><br><span class="line">            Process cmd = FFmpegProcessUtil.getFFmpegProcessUtil().getRecord(streamName);</span><br><span class="line">            cmd.destroy();</span><br><span class="line">            FFmpegProbeResult probe = ShellUtil.probe(config.getString(<span class="string">"ffprobe_path"</span>), filePath);</span><br><span class="line">            <span class="comment">//保存文件信息</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//其它处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&#12288;&#12288;当我在logger.info行添加断点调试时发现就算destroy()执行成功后。ffmpeg进程仍然存在，直到整个handle处理完成之后ffmpeg才消失。<br>&#12288;&#12288;于是对代码做了如下调整。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vertx.setPeriodic(<span class="number">1000</span> * <span class="number">1</span>, <span class="keyword">new</span> RefreshStreamHandler());</span><br><span class="line">vertx.setPeriodic(<span class="number">1000</span> * <span class="number">1</span>, <span class="keyword">new</span> FileHandler());</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(Long event)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//其它未失效数据处理</span></span><br><span class="line">    loseMapKey.forEach(streamName -&gt; &#123;</span><br><span class="line">        <span class="comment">//其它处理</span></span><br><span class="line">        <span class="keyword">if</span>(lostMap.get(streamName).getLcFile() != <span class="keyword">null</span>)&#123;</span><br><span class="line">            logger.info(<span class="string">"发现流结束时仍然有录制"</span>);</span><br><span class="line">            Process cmd = FFmpegProcessUtil.getFFmpegProcessUtil().getRecord(streamName);</span><br><span class="line">            cmd.destroy();</span><br><span class="line">            recordList.add(filePath)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//其它处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span><filehandler.java></filehandler.java></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(Long event)</span> </span>&#123;</span><br><span class="line">    getNext();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (recordList.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		insertFile(recordList.get(<span class="number">0</span>));</span><br><span class="line">		recordList.remove(<span class="number">0</span>);</span><br><span class="line">		getNext();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&#12288;&#12288;使用另一个定时器去查找文件，由于两个定时器同时执行，当扫描端口的定时器查询到流结束时将流标识添加到list中，本次同时执行的文件扫描定时器因为已经执行完成，所以只能在下个周期处理当前周期添加到list中的任务。本地测试后放到服务器，检验OK。</p>
+<p>&#12288;&#12288;代码表面的问题已经解决，但是更深入的原理的仍然困扰着我。rtmp源地址没有断的情况下，使用destroy()方法后立即查询文件详情为什么没有问题？ffmpeg为何会在handle()方法执行完成后就会停止？Runtimer执行shell的时候，Process和进程之间的关系等等。。。</p>
+<p><code>要学的东西还有很多。留个坑，以后一定会补上后面三个问题</code></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/ffmpeg/" rel="tag"># ffmpeg</a>
+          
+            <a href="/tags/rtmp/" rel="tag"># rtmp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/20/my-first-one/" rel="next" title="My first one">
+                <i class="fa fa-chevron-left"></i> My first one
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/23/what-is-vert-x/" rel="prev" title="What is Vert.X">
+                What is Vert.X <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="疯喵子">
+            
+              <p class="site-author-name" itemprop="name">疯喵子</p>
+              <p class="site-description motion-element" itemprop="description">终于想起来这件事情了，给自己个赞</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">疯喵子</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>喵渣渣</title>
+  
+  <subtitle>个人博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.goujinbo.com/"/>
+  <updated>2018-11-19T01:26:17.602Z</updated>
+  <id>http://blog.goujinbo.com/</id>
+  
+  <author>
+    <name>疯喵子</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>star UML 3 license</title>
+    <link href="http://blog.goujinbo.com/2018/06/10/star-uml-license/"/>
+    <id>http://blog.goujinbo.com/2018/06/10/star-uml-license/</id>
+    <published>2018-06-10T02:41:01.000Z</published>
+    <updated>2018-11-19T01:26:17.602Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间换电脑，之前的部分软件需要重新激活。这里总结一下用到的软件的激活方式，以备不时之需。&lt;br&gt;如果有能力还请支持一下开发者。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://staruml.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;star UML 3&lt;/a&gt; 是一个优秀的开源uml工具，是软件设计不可少的工具，但是价格实在是劝退门槛。以前记录的激活方式不能使用了，代码封装成了asar包。查了一下资料，软件仍然使用node js开发，使用asar打包。
+    
+    </summary>
+    
+    
+      <category term="激活码" scheme="http://blog.goujinbo.com/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sublime text 3 license</title>
+    <link href="http://blog.goujinbo.com/2018/05/30/sublime-text-3-license/"/>
+    <id>http://blog.goujinbo.com/2018/05/30/sublime-text-3-license/</id>
+    <published>2018-05-30T06:10:52.000Z</published>
+    <updated>2018-11-14T06:26:00.238Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;sublime text 是一个非常优秀的文本编辑器，即使不付费也能无限期试用，本站收集的license均来自互联网。如果有能力还请支持一下开发者。&lt;/p&gt;
+&lt;h2 id=&quot;sublime-text-3-3176-license&quot;&gt;&lt;a href=&quot;#sublime-text-3-3176-license&quot; class=&quot;headerlink&quot; title=&quot;sublime text 3 3176 license&quot;&gt;&lt;/a&gt;sublime text 3 3176 license&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;----- BEGIN LICENSE -----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sgbteam&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Single User License&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;EA7E-1153259&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8891CBB9 F1513E4F 1A3405C1 A865D53F&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;115F202E 7B91AB2D 0D2A40ED 352B269B&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76E84F0B CD69BFC7 59F2DFEF E267328F&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;215652A3 E88F9D8F 4C38E3BA 5B2DAAE4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;969624E7 DC9CD4D5 717FB40C 1B9738CF&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20B3C4F1 E917B5B3 87C38D9C ACCE7DD8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5F7EF854 86B9743C FADC04AA FB0DA5C0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;F913BE58 42FEA319 F954EFDD AE881E0B&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;------ END LICENSE ------&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="激活码" scheme="http://blog.goujinbo.com/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java 快速排序实现与详解</title>
+    <link href="http://blog.goujinbo.com/2018/03/08/java-quick-Sort/"/>
+    <id>http://blog.goujinbo.com/2018/03/08/java-quick-Sort/</id>
+    <published>2018-03-08T06:56:06.000Z</published>
+    <updated>2018-03-31T05:56:37.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;快速排序是一种简单的，常用(被问到)的排序算法。这里讲述一下快速排序的逻辑原理和Java的实现代码。&lt;br&gt;快速排序的思想核心，我认为就是4个字：化繁为简。  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要$O(n \log n )$（大O符号）次比较。在最坏状况下则需要$O(n^2)$次比较，但这种状况并不常见。事实上，快速排序通常明显比其他$O(n \log n )$演算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。&lt;br&gt;以上文字摘自&lt;a href=&quot;https://www.wikiwand.com/zh-hans/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;wikiwand-快速排序&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.goujinbo.com/tags/java/"/>
+    
+      <category term="算法" scheme="http://blog.goujinbo.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JShell</title>
+    <link href="http://blog.goujinbo.com/2018/02/06/JShell/"/>
+    <id>http://blog.goujinbo.com/2018/02/06/JShell/</id>
+    <published>2018-02-06T07:15:16.000Z</published>
+    <updated>2018-02-06T08:56:10.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的结果会被自动保存下来，以数字编号作为引用，类似$1和$2这样的名称。可以在后续的表达式中引用之前语句的运行结果。在jshell中，除了表达式之外，还可以创建Java类和方法。jshell也有基本的代码完成功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.goujinbo.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello! Java 9</title>
+    <link href="http://blog.goujinbo.com/2018/02/05/hello-java-9/"/>
+    <id>http://blog.goujinbo.com/2018/02/05/hello-java-9/</id>
+    <published>2018-02-05T06:16:13.000Z</published>
+    <updated>2018-02-06T07:28:59.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#12288;&amp;#12288;java9正式发布已经有一段时间了，作为一个思想&lt;del&gt;激进&lt;/del&gt;&lt;strong&gt;开放&lt;/strong&gt;，勇于探索的喵，本着拥抱新特性的心态。&lt;del&gt;第一时间&lt;/del&gt;对java的文档进行了拜读，结合这段时间&lt;del&gt;零零散散&lt;/del&gt;&lt;strong&gt;持续&lt;/strong&gt;的测试和理解，记录下来以后可能会用到的几个特性。
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.goujinbo.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vertx的Hello Word!</title>
+    <link href="http://blog.goujinbo.com/2018/01/24/vertx-hello-word/"/>
+    <id>http://blog.goujinbo.com/2018/01/24/vertx-hello-word/</id>
+    <published>2018-01-24T09:56:19.000Z</published>
+    <updated>2018-02-06T07:02:59.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于Vert.X目前“火爆”的人气，使用各种搜索引擎都能找到大量的社区网站、博客来介绍vertx各种概念。这里就不再啰嗦了。本喵从今天开始，使用实际的代码来展示实际工作中可能会遇到的一些问题。以及解决方案。如果你有在使用Vert.X，并且遇到了一些问题，欢迎留言讨论。使用的架构模式，是本喵在实际生产中自己搭建的一个单机框架（分布式简化而来）。
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.goujinbo.com/tags/java/"/>
+    
+      <category term="Vert.X" scheme="http://blog.goujinbo.com/tags/Vert-X/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>What is Vert.X</title>
+    <link href="http://blog.goujinbo.com/2018/01/23/what-is-vert-x/"/>
+    <id>http://blog.goujinbo.com/2018/01/23/what-is-vert-x/</id>
+    <published>2018-01-23T06:31:49.000Z</published>
+    <updated>2018-02-06T07:03:07.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#12288;&amp;#12288;两年前在公司开始负责一个底层api的项目。包含功能很简单，对接底层系统进行封装，提供一些功能实现的封装，对外提供http restful接口。主要要求是支持高并发和高稳定性。最开始的选型是用一些轻量级的http server框架。然后集成spring、mybatis等传统框架实现，后来了解了一个叫做Vert.X的nio框架。进行尝试并且经过了漫长的适应期之后。本喵只有一句话。Vert.X即是正义！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.goujinbo.com/tags/java/"/>
+    
+      <category term="Vert.X" scheme="http://blog.goujinbo.com/tags/Vert-X/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过java使用ffmpeg录制rtmp视频流，文件无法读取</title>
+    <link href="http://blog.goujinbo.com/2018/01/22/ffmpeg-java-record-file-info-read-error/"/>
+    <id>http://blog.goujinbo.com/2018/01/22/ffmpeg-java-record-file-info-read-error/</id>
+    <published>2018-01-21T16:35:19.000Z</published>
+    <updated>2018-02-06T07:03:16.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#12288;&amp;#12288;前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。&lt;br&gt;&amp;#12288;&amp;#12288;当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.goujinbo.com/tags/java/"/>
+    
+      <category term="ffmpeg" scheme="http://blog.goujinbo.com/tags/ffmpeg/"/>
+    
+      <category term="rtmp" scheme="http://blog.goujinbo.com/tags/rtmp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My first one</title>
+    <link href="http://blog.goujinbo.com/2018/01/20/my-first-one/"/>
+    <id>http://blog.goujinbo.com/2018/01/20/my-first-one/</id>
+    <published>2018-01-20T03:18:55.000Z</published>
+    <updated>2018-01-20T04:25:23.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;毕业好几年了，陆陆续续下好几次想要搭建自己的博客，都因为种种原因搁浅了。&lt;br&gt;17年年底，回首过去的浑浑噩噩，觉得是时候总结一波了。&lt;br&gt;这个站点会在接下来以技术为主，其它为辅。先总结之前积攒下的经验，现在用到的技术。以及记录以后的学习过程。&lt;/p&gt;
+&lt;blockquo
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://blog.goujinbo.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+</feed>

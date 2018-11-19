@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/stylised-cat-152-213771.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/stylised-cat-144-213771.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JShell">
+<meta property="og:url" content="http://blog.goujinbo.com/2018/02/06/JShell/index.html">
+<meta property="og:site_name" content="喵渣渣">
+<meta property="og:description" content="jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.goujinbo.com/2018/02/06/JShell/edit-all.png">
+<meta property="og:image" content="http://blog.goujinbo.com/2018/02/06/JShell/edit.png">
+<meta property="og:image" content="http://blog.goujinbo.com/2018/02/06/JShell/edit-test.png">
+<meta property="og:updated_time" content="2018-02-06T08:56:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JShell">
+<meta name="twitter:description" content="jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的">
+<meta name="twitter:image" content="http://blog.goujinbo.com/2018/02/06/JShell/edit-all.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="喵渣渣" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://blog.goujinbo.com/2018/02/06/JShell/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JShell | 喵渣渣</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">喵渣渣</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">个人博客</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.goujinbo.com/2018/02/06/JShell/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="疯喵子">
+      <meta itemprop="description" content="终于想起来这件事情了，给自己个赞">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喵渣渣">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JShell
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-06 15:15:16 / 修改时间：16:56:10" itemprop="dateCreated datePublished" datetime="2018-02-06T15:15:16+08:00">2018-02-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的结果会被自动保存下来，以数字编号作为引用，类似$1和$2这样的名称。可以在后续的表达式中引用之前语句的运行结果。在jshell中，除了表达式之外，还可以创建Java类和方法。jshell也有基本的代码完成功能。</p>
+</blockquote>
+<a id="more"></a>
+<p>以上摘自<a href="https://www.ibm.com/developerworks/cn/java/the-new-features-of-Java-9/index.html" target="_blank" rel="noopener">ibm developerworks</a></p>
+<h1 id="启动jshell"><a href="#启动jshell" class="headerlink" title="启动jshell"></a>启动jshell</h1><p>安装jdk并配置好环境之后，在控制台输入jshell启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">BOBOdeRMBP:~ bobo$ java -version</span><br><span class="line">java version <span class="string">"9"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 9+181)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 9+181, mixed mode)</span><br><span class="line">BOBOdeRMBP:~ bobo$ jshell </span><br><span class="line">|  欢迎使用 JShell -- 版本 9</span><br><span class="line">|  要大致了解该版本, 请键入: /<span class="built_in">help</span> intro</span><br><span class="line"></span><br><span class="line">jshell&gt; /<span class="built_in">help</span> intro</span><br><span class="line">|  </span><br><span class="line">|  intro</span><br><span class="line">|  </span><br><span class="line">|  使用 jshell 工具可以执行 Java 代码, 从而立即获取结果。</span><br><span class="line">|  您可以输入 Java 定义 (变量, 方法, 类, 等等), 例如:  int x = 8</span><br><span class="line">|  或 Java 表达式, 例如:  x + x</span><br><span class="line">|  或 Java 语句或导入。</span><br><span class="line">|  这些小块的 Java 代码称为 <span class="string">'片段'</span>。</span><br><span class="line">|  </span><br><span class="line">|  这些 jshell 命令还可以让您了解和</span><br><span class="line">|  控制您正在执行的操作, 例如:  /list</span><br><span class="line">|  </span><br><span class="line">|  有关命令的列表, 请执行: /<span class="built_in">help</span></span><br><span class="line">jshell&gt; /<span class="built_in">help</span></span><br><span class="line">|  键入 Java 语言表达式, 语句或声明。</span><br><span class="line">|  或者键入以下命令之一:</span><br><span class="line">|  /list [&lt;名称或 id&gt;|-all|-start]</span><br><span class="line">|  	列出您键入的源</span><br><span class="line">|  /edit &lt;名称或 id&gt;</span><br><span class="line">|  	编辑按名称或 id 引用的源条目</span><br><span class="line">|  /drop &lt;名称或 id&gt;</span><br><span class="line">|  	删除按名称或 id 引用的源条目</span><br><span class="line">|  /save [-all|-<span class="built_in">history</span>|-start] &lt;文件&gt;</span><br><span class="line">|  	将片段源保存到文件。</span><br><span class="line">|  /open &lt;file&gt;</span><br><span class="line">|  	打开文件作为源输入</span><br><span class="line">|  /vars [&lt;名称或 id&gt;|-all|-start]</span><br><span class="line">|  	列出已声明变量及其值</span><br><span class="line">|  /methods [&lt;名称或 id&gt;|-all|-start]</span><br><span class="line">|  	列出已声明方法及其签名</span><br><span class="line">|  /types [&lt;名称或 id&gt;|-all|-start]</span><br><span class="line">|  	列出已声明的类型</span><br><span class="line">|  /imports </span><br><span class="line">|  	列出导入的项</span><br><span class="line">|  /<span class="built_in">exit</span> </span><br><span class="line">|  	退出 jshell</span><br><span class="line">|  /env [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;] ...</span><br><span class="line">|  	查看或更改评估上下文</span><br><span class="line">|  /reset [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;]...</span><br><span class="line">|  	重启 jshell</span><br><span class="line">|  /reload [-restore] [-quiet] [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;]...</span><br><span class="line">|  	重置和重放相关历史记录 -- 当前历史记录或上一个历史记录 (-restore)</span><br><span class="line">|  /<span class="built_in">history</span> </span><br><span class="line">|  	您键入的内容的历史记录</span><br><span class="line">|  /<span class="built_in">help</span> [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|  	获取 jshell 的相关信息</span><br><span class="line">|  /<span class="built_in">set</span> editor|start|feedback|mode|prompt|truncation|format ...</span><br><span class="line">|  	设置 jshell 配置信息</span><br><span class="line">|  /? [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|  	获取 jshell 的相关信息</span><br><span class="line">|  /! </span><br><span class="line">|  	重新运行上一个片段</span><br><span class="line">|  /&lt;id&gt; </span><br><span class="line">|  	按 id 重新运行片段</span><br><span class="line">|  /-&lt;n&gt; </span><br><span class="line">|  	重新运行前面的第 n 个片段</span><br><span class="line">|  </span><br><span class="line">|  有关详细信息, 请键入 <span class="string">'/help'</span>, 后跟</span><br><span class="line">|  命令或主题的名称。</span><br><span class="line">|  例如 <span class="string">'/help /list'</span> 或 <span class="string">'/help intro'</span>。主题:</span><br><span class="line">|  </span><br><span class="line">|  intro</span><br><span class="line">|  	jshell 工具的简介</span><br><span class="line">|  shortcuts</span><br><span class="line">|  	片段和命令输入提示, 信息访问以及</span><br><span class="line">|  	自动代码生成的按键说明</span><br><span class="line">|  context</span><br><span class="line">|  	/env /reload 和 /reset 的评估上下文选项</span><br><span class="line"></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<p>我们使用<a href="/2018/02/05/hello-java-9/" title="hello-java-9">hello-java-9</a>一文中的代码进行测试，直接使用jshell，不去创建项目，配置maven，打包运行来测试Java9语法新接口和特性。<br>首先我们先测试一下基本功能。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt;  System.out.println(<span class="string">"Hello, Java 9, now I am in JShell!"</span>)</span><br><span class="line">Hello, Java 9, now I am <span class="keyword">in</span> JShell!</span><br><span class="line"></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="引用包"><a href="#引用包" class="headerlink" title="引用包"></a>引用包</h1><p>使用<code>/imports</code>可以查看已经引用的包，包括默认引用。<br>例如我们要测试LocalDateTime类的方法，需要手动引用java.time包的内容，可以如下手动引用</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; import java.time.*;</span><br><span class="line"></span><br><span class="line">jshell&gt; /imports </span><br><span class="line">|    import java.io.*</span><br><span class="line">|    import java.math.*</span><br><span class="line">|    import java.net.*</span><br><span class="line">|    import java.nio.file.*</span><br><span class="line">|    import java.util.*</span><br><span class="line">|    import java.util.concurrent.*</span><br><span class="line">|    import java.util.function.*</span><br><span class="line">|    import java.util.prefs.*</span><br><span class="line">|    import java.util.regex.*</span><br><span class="line">|    import java.util.stream.*</span><br><span class="line">|    import java.time.*</span><br><span class="line"></span><br><span class="line">jshell&gt; System.out.print(LocalDateTime.now())</span><br><span class="line">2018-02-06T15:58:54.532902</span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h1><p>jshell提供有命令和代码的自动补全，无论是代码还是命令都可以使用tab键进行提示，这对于快速编写短小的测试代码提高了很大的效率。<br>代码提示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; LocalDate</span><br><span class="line">LocalDate       LocalDateTime   </span><br><span class="line"></span><br><span class="line">签名:</span><br><span class="line">java.time.LocalDate</span><br><span class="line"></span><br><span class="line">&lt;再次按 Tab 可查看文档&gt;</span><br><span class="line"></span><br><span class="line">jshell&gt; LocalDate</span><br><span class="line">java.time.LocalDate</span><br><span class="line">A date without a time-zone <span class="keyword">in</span> the ISO-8601 calendar system, such as 2007-12-03 .</span><br><span class="line"> LocalDate is an immutable date-time object that represents a date, often viewed as</span><br><span class="line">year-month-day. Other date fields, such as day-of-year, day-of-week and week-of-year, can also</span><br><span class="line">be accessed. For example, the value <span class="string">"2nd October 2007"</span> can be stored <span class="keyword">in</span> a LocalDate .</span><br><span class="line">This class does not store or represent a time or time-zone. Instead, it is a description of the</span><br><span class="line">date, as used <span class="keyword">for</span> birthdays. It cannot represent an instant on the time-line without additional</span><br><span class="line">information such as an offset or time-zone.</span><br><span class="line">The ISO-8601 calendar system is the modern civil calendar system used today <span class="keyword">in</span> most of the</span><br><span class="line">world. It is equivalent to the proleptic Gregorian calendar system, <span class="keyword">in</span> <span class="built_in">which</span> today<span class="string">'s rules for</span></span><br><span class="line"><span class="string">leap years are applied for all time. For most applications written today, the ISO-8601 rules</span></span><br><span class="line"><span class="string">are entirely suitable. However, any application that makes use of historical dates, and</span></span><br><span class="line"><span class="string">requires them to be accurate will find the ISO-8601 approach unsuitable.</span></span><br><span class="line"><span class="string">This is a value-based class; use of identity-sensitive operations (including reference equality</span></span><br><span class="line"><span class="string">( == ), identity hash code, or synchronization) on instances of LocalDate may have</span></span><br><span class="line"><span class="string">unpredictable results and should be avoided. The equals method should be used for comparisons.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">jshell&gt; LocalDate</span></span><br></pre></td></tr></table></figure>
+<p>命令提示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; /e</span><br><span class="line">/edit    /env     /<span class="built_in">exit</span>    </span><br><span class="line"></span><br><span class="line">&lt;再次按 Tab 可查看提要&gt;</span><br><span class="line"></span><br><span class="line">jshell&gt; /e</span><br><span class="line">/edit</span><br><span class="line">编辑按名称或 id 引用的源条目</span><br><span class="line"></span><br><span class="line">/env</span><br><span class="line">查看或更改评估上下文</span><br><span class="line"></span><br><span class="line">/<span class="built_in">exit</span></span><br><span class="line">退出 jshell</span><br><span class="line"></span><br><span class="line">&lt;再次按 Tab 可查看完整文档&gt;</span><br><span class="line"></span><br><span class="line">jshell&gt; /e</span><br></pre></td></tr></table></figure>
+<h1 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h1><p>1.直接创建类（这里只是演示可支持类、方法的定义，非必须。）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; class Test&#123;&#125;</span><br><span class="line">|  已创建 类 Test</span><br><span class="line"></span><br><span class="line">jshell&gt; class Test&#123;</span><br><span class="line">   ...&gt; public void add(int a,int b)&#123;System.out.print(a+b);&#125;</span><br><span class="line">   ...&gt; &#125;</span><br><span class="line">|  已替换 类 Test</span><br><span class="line"></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<p>重新定义相同名字的片段会直接覆盖上一个片段。<br>2.创建对象</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; Test testObj = new Test()</span><br><span class="line">testObj ==&gt; Test@6fd02e5</span><br><span class="line"></span><br><span class="line">jshell&gt; testObj.add(3,4)</span><br><span class="line">7</span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<p>3.直接定义方法、对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; <span class="keyword">int</span> i = <span class="number">5</span></span><br><span class="line">i ==&gt; <span class="number">5</span></span><br><span class="line"></span><br><span class="line">jshell&gt; <span class="keyword">int</span> j = <span class="number">9</span></span><br><span class="line">j ==&gt; <span class="number">9</span></span><br><span class="line"></span><br><span class="line">jshell&gt; <span class="function"><span class="keyword">void</span> <span class="title">product</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;System.out.print(a+<span class="string">"*"</span>+b+<span class="string">"="</span>+(a*b));&#125;</span><br><span class="line">|  已创建 方法 product(<span class="keyword">int</span>,<span class="keyword">int</span>) </span><br><span class="line"></span><br><span class="line">jshell&gt; product(i,j)</span><br><span class="line"><span class="number">5</span>*<span class="number">9</span>=<span class="number">45</span></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<p>4.编辑代码片段<br>除了再写一个同名的片段覆盖之前代码外，我们可以使用<code>/edit</code>命令对之前的代码片段进行修改。<br>例如我们定义的product方法输出的是a*b=结果，而Test类的add方法则直接输出的是结果。我们可以修改add方法的输出。<br>先试用/list方法查看所有的片段</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; /list</span><br><span class="line"></span><br><span class="line">   2 : class Test&#123;</span><br><span class="line">       public void add(int a,int b)&#123;System.out.print(a+b);&#125;</span><br><span class="line">       &#125;</span><br><span class="line">   3 : Test testObj = new Test();</span><br><span class="line">   4 : testObj.add(3,4)</span><br><span class="line">   5 : int i = 5;</span><br><span class="line">   6 : int j = 9;</span><br><span class="line">   7 : void product(int a,int b)&#123;System.out.print(a+<span class="string">"*"</span>+b+<span class="string">"="</span>+(a*b));&#125;</span><br><span class="line">   8 : product(i,j)</span><br><span class="line"></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<p>使用/edge命令可以编辑全部，或指定的片段。<br><img src="/2018/02/06/JShell/edit-all.png" title="使用/edit -all命令"><br><img src="/2018/02/06/JShell/edit.png" title="使用/edit命令"><br><img src="/2018/02/06/JShell/edit-test.png" title="使用/edit Test或/edit 2命令"><br>我们直接在jshell edit pad修改Test类为一下代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.print(a + <span class="string">"+"</span> + b + <span class="string">"="</span> + (a + b));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击Accept，查看控制台</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; /edit Test</span><br><span class="line">Exception <span class="string">"java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"</span><span class="keyword">while</span> constructing DataFlavor <span class="keyword">for</span>: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.FoldingData</span><br><span class="line">Exception <span class="string">"java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"</span><span class="keyword">while</span> constructing DataFlavor <span class="keyword">for</span>: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.FoldingData</span><br><span class="line">Exception <span class="string">"java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/ReferenceData"</span><span class="keyword">while</span> constructing DataFlavor <span class="keyword">for</span>: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.ReferenceData</span><br><span class="line">Exception <span class="string">"java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/ReferenceData"</span><span class="keyword">while</span> constructing DataFlavor <span class="keyword">for</span>: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.ReferenceData</span><br><span class="line">|  已修改 类 Test</span><br><span class="line"></span><br><span class="line">jshell&gt; /list</span><br><span class="line"></span><br><span class="line">   3 : Test testObj = new Test();</span><br><span class="line">   4 : testObj.add(3,4)</span><br><span class="line">   5 : int i = 5;</span><br><span class="line">   6 : int j = 9;</span><br><span class="line">   7 : void product(int a,int b)&#123;System.out.print(a+<span class="string">"*"</span>+b+<span class="string">"="</span>+(a*b));&#125;</span><br><span class="line">   8 : product(i,j)</span><br><span class="line">   9 : class Test &#123;</span><br><span class="line">           public void add(int a, int b) &#123;</span><br><span class="line">               System.out.print(a + <span class="string">"+"</span> + b + <span class="string">"="</span> + (a + b));</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<p>最后测试一下修改后的代码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; product(i,j)</span><br><span class="line">5*9=45</span><br><span class="line">jshell&gt; testObj.add(i,j)</span><br><span class="line">5+9=14</span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h1><p><code>/exit</code></p>
+<p>以上就是对jshell的简单介绍，jshell还有更多使用的功能，例如/open命令可以将文件作为输入源等等， 大家可以自己动手实验。<br>使用jshell可以快速执行一些脚本和代码，避免了建项目、打包等冗余操作，还可以快速在远端环境测试一些代码片段，能极大缩短不必要的时间浪费。</p>
+<p><code>小技巧：在shell中，按下回车会立即执行当前代码片段，而有些方法往往需要写好几行，按下shift+enter来换行</code></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/05/hello-java-9/" rel="next" title="Hello! Java 9">
+                <i class="fa fa-chevron-left"></i> Hello! Java 9
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/08/java-quick-Sort/" rel="prev" title="java 快速排序实现与详解">
+                java 快速排序实现与详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="疯喵子">
+            
+              <p class="site-author-name" itemprop="name">疯喵子</p>
+              <p class="site-description motion-element" itemprop="description">终于想起来这件事情了，给自己个赞</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启动jshell"><span class="nav-number">1.</span> <span class="nav-text">启动jshell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用包"><span class="nav-number">2.</span> <span class="nav-text">引用包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动补全"><span class="nav-number">3.</span> <span class="nav-text">自动补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行代码"><span class="nav-number">4.</span> <span class="nav-text">执行代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#退出"><span class="nav-number">5.</span> <span class="nav-text">退出</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">疯喵子</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
