@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://blog.goujinbo.com/2018/02/06/JShell/edit-all.png">
 <meta property="og:image" content="http://blog.goujinbo.com/2018/02/06/JShell/edit.png">
 <meta property="og:image" content="http://blog.goujinbo.com/2018/02/06/JShell/edit-test.png">
-<meta property="og:updated_time" content="2018-02-06T08:56:10.000Z">
+<meta property="og:updated_time" content="2019-03-04T08:48:46.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JShell">
 <meta name="twitter:description" content="jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的">
@@ -387,12 +387,24 @@
                 
               
 
-              <time title="创建时间：2018-02-06 15:15:16 / 修改时间：16:56:10" itemprop="dateCreated datePublished" datetime="2018-02-06T15:15:16+08:00">2018-02-06</time>
+              <time title="创建时间：2018-02-06 15:15:16" itemprop="dateCreated datePublished" datetime="2018-02-06T15:15:16+08:00">2018-02-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-04 16:48:46" itemprop="dateModified" datetime="2019-03-04T16:48:46+08:00">2019-03-04</time>
               
             
           </span>
@@ -440,13 +452,22 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; LocalDate</span><br><span class="line">LocalDate       LocalDateTime   </span><br><span class="line"></span><br><span class="line">签名:</span><br><span class="line">java.time.LocalDate</span><br><span class="line"></span><br><span class="line">&lt;再次按 Tab 可查看文档&gt;</span><br><span class="line"></span><br><span class="line">jshell&gt; LocalDate</span><br><span class="line">java.time.LocalDate</span><br><span class="line">A date without a time-zone <span class="keyword">in</span> the ISO-8601 calendar system, such as 2007-12-03 .</span><br><span class="line"> LocalDate is an immutable date-time object that represents a date, often viewed as</span><br><span class="line">year-month-day. Other date fields, such as day-of-year, day-of-week and week-of-year, can also</span><br><span class="line">be accessed. For example, the value <span class="string">"2nd October 2007"</span> can be stored <span class="keyword">in</span> a LocalDate .</span><br><span class="line">This class does not store or represent a time or time-zone. Instead, it is a description of the</span><br><span class="line">date, as used <span class="keyword">for</span> birthdays. It cannot represent an instant on the time-line without additional</span><br><span class="line">information such as an offset or time-zone.</span><br><span class="line">The ISO-8601 calendar system is the modern civil calendar system used today <span class="keyword">in</span> most of the</span><br><span class="line">world. It is equivalent to the proleptic Gregorian calendar system, <span class="keyword">in</span> <span class="built_in">which</span> today<span class="string">'s rules for</span></span><br><span class="line"><span class="string">leap years are applied for all time. For most applications written today, the ISO-8601 rules</span></span><br><span class="line"><span class="string">are entirely suitable. However, any application that makes use of historical dates, and</span></span><br><span class="line"><span class="string">requires them to be accurate will find the ISO-8601 approach unsuitable.</span></span><br><span class="line"><span class="string">This is a value-based class; use of identity-sensitive operations (including reference equality</span></span><br><span class="line"><span class="string">( == ), identity hash code, or synchronization) on instances of LocalDate may have</span></span><br><span class="line"><span class="string">unpredictable results and should be avoided. The equals method should be used for comparisons.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">jshell&gt; LocalDate</span></span><br></pre></td></tr></table></figure>
 <p>命令提示：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; /e</span><br><span class="line">/edit    /env     /<span class="built_in">exit</span>    </span><br><span class="line"></span><br><span class="line">&lt;再次按 Tab 可查看提要&gt;</span><br><span class="line"></span><br><span class="line">jshell&gt; /e</span><br><span class="line">/edit</span><br><span class="line">编辑按名称或 id 引用的源条目</span><br><span class="line"></span><br><span class="line">/env</span><br><span class="line">查看或更改评估上下文</span><br><span class="line"></span><br><span class="line">/<span class="built_in">exit</span></span><br><span class="line">退出 jshell</span><br><span class="line"></span><br><span class="line">&lt;再次按 Tab 可查看完整文档&gt;</span><br><span class="line"></span><br><span class="line">jshell&gt; /e</span><br></pre></td></tr></table></figure>
-<h1 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h1><p>1.直接创建类（这里只是演示可支持类、方法的定义，非必须。）</p>
+<h1 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h1><ol>
+<li>直接创建类（这里只是演示可支持类、方法的定义，非必须。）</li>
+</ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; class Test&#123;&#125;</span><br><span class="line">|  已创建 类 Test</span><br><span class="line"></span><br><span class="line">jshell&gt; class Test&#123;</span><br><span class="line">   ...&gt; public void add(int a,int b)&#123;System.out.print(a+b);&#125;</span><br><span class="line">   ...&gt; &#125;</span><br><span class="line">|  已替换 类 Test</span><br><span class="line"></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
-<p>重新定义相同名字的片段会直接覆盖上一个片段。<br>2.创建对象</p>
+<p>重新定义相同名字的片段会直接覆盖上一个片段。  </p>
+<ol start="2">
+<li>创建对象</li>
+</ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; Test testObj = new Test()</span><br><span class="line">testObj ==&gt; Test@6fd02e5</span><br><span class="line"></span><br><span class="line">jshell&gt; testObj.add(3,4)</span><br><span class="line">7</span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
-<p>3.直接定义方法、对象</p>
+<ol start="3">
+<li>直接定义方法、对象</li>
+</ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; <span class="keyword">int</span> i = <span class="number">5</span></span><br><span class="line">i ==&gt; <span class="number">5</span></span><br><span class="line"></span><br><span class="line">jshell&gt; <span class="keyword">int</span> j = <span class="number">9</span></span><br><span class="line">j ==&gt; <span class="number">9</span></span><br><span class="line"></span><br><span class="line">jshell&gt; <span class="function"><span class="keyword">void</span> <span class="title">product</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;System.out.print(a+<span class="string">"*"</span>+b+<span class="string">"="</span>+(a*b));&#125;</span><br><span class="line">|  已创建 方法 product(<span class="keyword">int</span>,<span class="keyword">int</span>) </span><br><span class="line"></span><br><span class="line">jshell&gt; product(i,j)</span><br><span class="line"><span class="number">5</span>*<span class="number">9</span>=<span class="number">45</span></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
-<p>4.编辑代码片段<br>除了再写一个同名的片段覆盖之前代码外，我们可以使用<code>/edit</code>命令对之前的代码片段进行修改。<br>例如我们定义的product方法输出的是a*b=结果，而Test类的add方法则直接输出的是结果。我们可以修改add方法的输出。<br>先试用/list方法查看所有的片段</p>
+<ol start="4">
+<li>编辑代码片段<br>除了再写一个同名的片段覆盖之前代码外，我们可以使用<code>/edit</code>命令对之前的代码片段进行修改。<br>例如我们定义的product方法输出的是a*b=结果，而Test类的add方法则直接输出的是结果。我们可以修改add方法的输出。<br>先试用/list方法查看所有的片段</li>
+</ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">jshell&gt; /list</span><br><span class="line"></span><br><span class="line">   2 : class Test&#123;</span><br><span class="line">       public void add(int a,int b)&#123;System.out.print(a+b);&#125;</span><br><span class="line">       &#125;</span><br><span class="line">   3 : Test testObj = new Test();</span><br><span class="line">   4 : testObj.add(3,4)</span><br><span class="line">   5 : int i = 5;</span><br><span class="line">   6 : int j = 9;</span><br><span class="line">   7 : void product(int a,int b)&#123;System.out.print(a+<span class="string">"*"</span>+b+<span class="string">"="</span>+(a*b));&#125;</span><br><span class="line">   8 : product(i,j)</span><br><span class="line"></span><br><span class="line">jshell&gt;</span><br></pre></td></tr></table></figure>
 <p>使用/edge命令可以编辑全部，或指定的片段。<br><img src="/2018/02/06/JShell/edit-all.png" title="使用/edit -all命令"><br><img src="/2018/02/06/JShell/edit.png" title="使用/edit命令"><br><img src="/2018/02/06/JShell/edit-test.png" title="使用/edit Test或/edit 2命令"><br>我们直接在jshell edit pad修改Test类为一下代码。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.print(a + <span class="string">"+"</span> + b + <span class="string">"="</span> + (a + b));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -668,7 +689,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
