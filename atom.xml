@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>数猫</title>
+  
+  <subtitle>数一数</subtitle>
+  <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.goujinbo.com/"/>
+  <updated>2020-12-21T09:50:36.255Z</updated>
+  <id>https://blog.goujinbo.com/</id>
+  
+  <author>
+    <name>鱍鱍</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://blog.goujinbo.com/posts/4a17b156/"/>
+    <id>https://blog.goujinbo.com/posts/4a17b156/</id>
+    <published>2020-12-21T09:24:28.759Z</published>
+    <updated>2020-12-21T09:50:36.255Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vert.x 异步调用基础</title>
+    <link href="https://blog.goujinbo.com/posts/88c52106/"/>
+    <id>https://blog.goujinbo.com/posts/88c52106/</id>
+    <published>2019-09-03T06:35:24.000Z</published>
+    <updated>2020-12-22T02:31:18.206Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;/posts/e9fa19ca&quot;&gt;上篇文章&lt;/a&gt; 简单介绍了一下如何使用Vert.x部署一个Verticle并创建一个http server。以及路由的试用。在部署Verticle的时候，我们使用的 &lt;code&gt;start()&lt;/code&gt; 函数的重载是&lt;code&gt;start(Promise&amp;lt;Void&amp;gt;)&lt;/code&gt;。这里的&lt;code&gt;Promise&lt;/code&gt;就是Vert.x异步框架会用到的最多的一个对象（划重点）。&lt;code&gt;Promise&lt;/code&gt;对象是从代码上能最直观体现Vert.x的异步非阻塞特性的。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="后端框架" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+    <category term="Vert.x框架教程《图书馆信息管理系统》" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/Vert-x%E6%A1%86%E6%9E%B6%E6%95%99%E7%A8%8B%E3%80%8A%E5%9B%BE%E4%B9%A6%E9%A6%86%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E3%80%8B/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vert.x 3.8.0 框架基础</title>
+    <link href="https://blog.goujinbo.com/posts/e9fa19ca/"/>
+    <id>https://blog.goujinbo.com/posts/e9fa19ca/</id>
+    <published>2019-08-21T03:16:40.000Z</published>
+    <updated>2019-09-04T06:54:28.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;http://vertx.io/&quot;&gt;Vert.x 3.8.0&lt;/a&gt;已经发布（写这篇文章的时候）,本次改动说大不大，说小也不小，删了之前介绍Vert.x 3.5的文章，重新使用3.8版本开发一个单点后台程序，为Vert.x发展信徒（误）  &lt;/p&gt;
+&lt;p&gt;开发环境：idea+maven+mysql+java8&lt;br&gt;计划开发一个图书馆信息管理系统。只做最简单的api后台功能，目的是梳理Vert.x开发思路。能力一般水平有限，从代码出发，尽量说清楚相关的内容。&lt;br&gt;前端实在太复杂了，不感动不感动&lt;/p&gt;
+&lt;p&gt;本篇文章为第一章，创建项目,介绍一下基础知识，并创建http server监听web端口。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="后端框架" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+    <category term="Vert.x框架教程《图书馆信息管理系统》" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/Vert-x%E6%A1%86%E6%9E%B6%E6%95%99%E7%A8%8B%E3%80%8A%E5%9B%BE%E4%B9%A6%E9%A6%86%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E3%80%8B/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>star UML 3 license</title>
+    <link href="https://blog.goujinbo.com/posts/aa766f8a/"/>
+    <id>https://blog.goujinbo.com/posts/aa766f8a/</id>
+    <published>2018-06-10T02:41:01.000Z</published>
+    <updated>2019-09-04T06:46:35.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前段时间换电脑，之前的部分软件需要重新激活。这里总结一下用到的软件的激活方式，以备不时之需。&lt;br&gt;如果有能力还请支持一下开发者。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://staruml.io/&quot;&gt;star UML 3&lt;/a&gt; 是一个优秀的开源uml工具，是软件设计不可少的工具，但是价格实在是劝退门槛。以前记录的激活方式不能使用了，代码封装成了asar包。查了一下资料，软件仍然使用node js开发，使用asar打包。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="常用软件" scheme="https://blog.goujinbo.com/categories/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="激活码" scheme="https://blog.goujinbo.com/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sublime text 3 license</title>
+    <link href="https://blog.goujinbo.com/posts/e36969ff/"/>
+    <id>https://blog.goujinbo.com/posts/e36969ff/</id>
+    <published>2018-05-30T06:10:52.000Z</published>
+    <updated>2019-09-04T06:46:35.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;sublime text 是一个非常优秀的文本编辑器，即使不付费也能无限期试用，本站收集的license均来自互联网。如果有能力还请支持一下开发者。&lt;/p&gt;
+&lt;h2 id=&quot;sublime-text-3-3176-license&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="常用软件" scheme="https://blog.goujinbo.com/categories/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="激活码" scheme="https://blog.goujinbo.com/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java 快速排序实现与详解</title>
+    <link href="https://blog.goujinbo.com/posts/ebe42ec/"/>
+    <id>https://blog.goujinbo.com/posts/ebe42ec/</id>
+    <published>2018-03-08T06:56:06.000Z</published>
+    <updated>2019-09-04T06:46:35.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;快速排序是一种简单的，常用(被问到)的排序算法。这里讲述一下快速排序的逻辑原理和Java的实现代码。&lt;br&gt;快速排序的思想核心，我认为就是4个字：化繁为简。  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要$O(n \log n )$（大O符号）次比较。在最坏状况下则需要$O(n^2)$次比较，但这种状况并不常见。事实上，快速排序通常明显比其他$O(n \log n )$演算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。&lt;br&gt;以上文字摘自&lt;a href=&quot;https://www.wikiwand.com/zh-hans/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F&quot;&gt;wikiwand-快速排序&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="算法" scheme="https://blog.goujinbo.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JShell</title>
+    <link href="https://blog.goujinbo.com/posts/5d70e24d/"/>
+    <id>https://blog.goujinbo.com/posts/5d70e24d/</id>
+    <published>2018-02-06T07:15:16.000Z</published>
+    <updated>2020-12-22T02:25:23.110Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的结果会被自动保存下来，以数字编号作为引用，类似$1和$2这样的名称。可以在后续的表达式中引用之前语句的运行结果。在jshell中，除了表达式之外，还可以创建Java类和方法。jshell也有基本的代码完成功能。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello! Java 9</title>
+    <link href="https://blog.goujinbo.com/posts/77f46f76/"/>
+    <id>https://blog.goujinbo.com/posts/77f46f76/</id>
+    <published>2018-02-05T06:16:13.000Z</published>
+    <updated>2020-12-22T02:26:54.726Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;　　java9正式发布已经有一段时间了，作为一个思想&lt;del&gt;激进&lt;/del&gt;__开放__，勇于探索的喵，本着拥抱新特性的心态。&lt;del&gt;第一时间&lt;/del&gt;对java的文档进行了拜读，结合这段时间&lt;del&gt;零零散散&lt;/del&gt;__持续__的测试和理解，记录下来以后可能会用到的几个特性。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vertx的Hello World!</title>
+    <link href="https://blog.goujinbo.com/posts/a0ca4f3a/"/>
+    <id>https://blog.goujinbo.com/posts/a0ca4f3a/</id>
+    <published>2018-01-24T09:56:19.000Z</published>
+    <updated>2019-09-06T01:50:34.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;由于Vert.x目前“火爆”的人气，使用各种搜索引擎都能找到大量的社区网站、博客来介绍vertx各种概念。这里就不再啰嗦了。本喵从今天开始，使用实际的代码来展示实际工作中可能会遇到的一些问题。以及解决方案。如果你有在使用Vert.x，并且遇到了一些问题，欢迎留言讨论。使用的架构模式，是本喵在实际生产中自己搭建的一个单机框架（分布式简化而来）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="后端框架" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>What is Vert.x</title>
+    <link href="https://blog.goujinbo.com/posts/246cc011/"/>
+    <id>https://blog.goujinbo.com/posts/246cc011/</id>
+    <published>2018-01-23T06:31:49.000Z</published>
+    <updated>2020-12-22T02:29:16.993Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;两年前在公司开始负责一个底层api的项目。包含功能很简单，对接底层系统进行封装，提供一些功能实现的封装，对外提供http restful接口。主要要求是支持高并发和高稳定性。最开始的选型是用一些轻量级的http server框架。然后集成spring、mybatis等传统框架实现，后来了解了一个叫做Vert.x的nio框架。进行尝试并且经过了漫长的适应期之后。本喵只有一句话。Vert.x即是正义！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="后端框架" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过java使用ffmpeg录制rtmp视频流，文件无法读取</title>
+    <link href="https://blog.goujinbo.com/posts/acbf2d1c/"/>
+    <id>https://blog.goujinbo.com/posts/acbf2d1c/</id>
+    <published>2018-01-21T16:35:19.000Z</published>
+    <updated>2019-10-28T07:01:02.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。&lt;br&gt;当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="遇到的问题" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="ffmpeg" scheme="https://blog.goujinbo.com/tags/ffmpeg/"/>
+    
+    <category term="rtmp" scheme="https://blog.goujinbo.com/tags/rtmp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My first one</title>
+    <link href="https://blog.goujinbo.com/posts/20fa54d6/"/>
+    <id>https://blog.goujinbo.com/posts/20fa54d6/</id>
+    <published>2018-01-20T03:18:55.000Z</published>
+    <updated>2019-09-04T06:46:35.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;毕业好几年了，陆陆续续下好几次想要搭建自己的博客，都因为种种原因搁浅了。&lt;br&gt;17年年底，回首过去的浑浑噩噩，觉得是时候总结一波了。&lt;br&gt;这个站点会在接下来以技术为主，其它为辅。先总结之前积攒下的经验，现在用到的技术。以及记录以后的学习过程。&lt;/p&gt;
+&lt;blockquo</summary>
+        
+      
+    
+    
+    
+    
+    <category term="生活" scheme="https://blog.goujinbo.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+</feed>
