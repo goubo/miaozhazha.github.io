@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="sublime text 3 license, 数猫">
+    <meta name="keywords" content="macOS 11 使用jenv管理 多版本jdk, 数猫">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>sublime text 3 license | 数猫</title>
+    <title>macOS 11 使用jenv管理 多版本jdk | 数猫</title>
     <link rel="icon" type="image/png" href="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/log.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -228,12 +228,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">sublime text 3 license</h1>
+                    <h1 class="description center-align post-title">macOS 11 使用jenv管理 多版本jdk</h1>
                 </div>
             </div>
         </div>
@@ -349,8 +349,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/">
-                                <span class="chip bg-color">激活码</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">开发工具</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                                <span class="chip bg-color">环境</span>
                             </a>
                         
                     </div>
@@ -361,8 +369,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                常用软件
+                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                开发
                             </a>
                         
                     </div>
@@ -374,28 +382,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-05-30
+                    2020-12-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-09-04
+                    2020-12-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    100
+                    809
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -423,24 +431,77 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>sublime text 是一个非常优秀的文本编辑器，即使不付费也能无限期试用，本站收集的license均来自互联网。如果有能力还请支持一下开发者。</p>
-<h2 id="sublime-text-3-3176-license"><a href="#sublime-text-3-3176-license" class="headerlink" title="sublime text 3 3176 license"></a>sublime text 3 3176 license</h2><pre class="line-numbers language-none"><code class="language-none">----- BEGIN LICENSE -----
-sgbteam
-Single User License
-EA7E-1153259
-8891CBB9 F1513E4F 1A3405C1 A865D53F
-115F202E 7B91AB2D 0D2A40ED 352B269B
-76E84F0B CD69BFC7 59F2DFEF E267328F
-215652A3 E88F9D8F 4C38E3BA 5B2DAAE4
-969624E7 DC9CD4D5 717FB40C 1B9738CF
-20B3C4F1 E917B5B3 87C38D9C ACCE7DD8
-5F7EF854 86B9743C FADC04AA FB0DA5C0
-F913BE58 42FEA319 F954EFDD AE881E0B
------- END LICENSE ------
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h2><p>mac升级big sug系统后,之前使用的jdk切换命令有些问题,使用sdkman几天后,发现兼容性还是有一些问题的.最后还是切换成 oracle jdk,使用jenv管理</p>
+<p>下载jdk就不废话了,记录一下安装jenv和开发环境配置的一些过程</p>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><ol>
+<li>安装 <a target="_blank" rel="noopener" href="https://brew.sh/index_zh-cn">homebrew</a>,现在已经适配了<br>安装命令:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>安装<code>openjdk </code> 如果需要<code>maven</code> ,可以直接安装<code>maven</code>,会自动依赖openjdk<br>安装命令:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew install openjdk
+or 
+brew install maven<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li>安装 <code>jenv</code><br>安装命令:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew install jenv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>下载安装<code>oracle jdk</code><br>我这里安装的是1.8和11版本,对应安装自己需要的版本</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="命令说明"><a href="#命令说明" class="headerlink" title="命令说明"></a>命令说明</h3><p>执行<code>jenv</code>命令,可以看到<code>jenv</code>的帮助文档</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ jenv                            
 
+jenv 0.5.4
+Usage: jenv &lt;command&gt; [&lt;args&gt;]
 
+Some useful jenv commands are:
+   commands    List all available jenv commands
+   local       Set or show the local application-specific Java version
+   global      Set or show the global Java version
+   shell       Set or show the shell-specific Java version
+   rehash      Rehash jenv shims (run this after installing executables)
+   version     Show the current Java version and its origin
+   versions    List all Java versions available to jenv
+   which       Display the full path to an executable
+   whence      List all Java versions that contain the given executable
+   add         Add JDK into jenv. A alias name will be generated by parsing "java -version"
 
+See `jenv help &lt;command&gt;' for information on a specific command.
+For full documentation, see: https://github.com/jenv/jenv/blob/master/README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="查看安装的jdk位置"><a href="#查看安装的jdk位置" class="headerlink" title="查看安装的jdk位置"></a>查看安装的jdk位置</h3><p>执行<code>/usr/libexec/java_home -V</code> 可以看到当前系统所有的jdk,</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/usr/libexec/java_home -V<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Matching Java Virtual Machines (3):
+    11.0.9 (x86_64) "Oracle Corporation" - "Java SE 11.0.9" /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+    1.8.271.09 (x86_64) "Oracle Corporation" - "Java" /Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
+    1.8.0_271 (x86_64) "Oracle Corporation" - "Java SE 8" /Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home
+/Users/bobo/.jenv/versions/1.8
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="添加jdk到jenv管理中"><a href="#添加jdk到jenv管理中" class="headerlink" title="添加jdk到jenv管理中"></a>添加jdk到jenv管理中</h3><p>使用<code>jevn add &lt;path&gt;</code>命令将jdk添加到jenv管理中.例如</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home
+
+oracle64-1.8.0.271 added
+1.8.0.271 added
+1.8 already present, skip installation<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="查看当前版本"><a href="#查看当前版本" class="headerlink" title="查看当前版本"></a>查看当前版本</h3><p>使用<code>jenv versions </code>命令,查看当前所有的版本,带<code>*</code>的是当前使用的版本,或者使用<code>jenv version</code> 查看当前使用的版本.</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv version
+
+  system
+* 1.8 (set by /Users/bobo/.java-version)
+  1.8.0.271
+  11
+  oracle64-1.8.0.271<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="设置系统jdk版本"><a href="#设置系统jdk版本" class="headerlink" title="设置系统jdk版本"></a>设置系统jdk版本</h3><p>使用<code>jenv local &lt;version name&gt;</code> 设置系统当前版本,例如</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv local 1.8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="删除版本"><a href="#删除版本" class="headerlink" title="删除版本"></a>删除版本</h3><p>使用<code>jenv remove &lt;version name&gt;</code> 删除管理的版本.</p>
+<blockquote>
+<p>注意,这里只会删除jenv管理列表,不会卸载jdk,jdk仍然在磁盘中.</p>
+</blockquote>
+<h2 id="插件设置"><a href="#插件设置" class="headerlink" title="插件设置"></a>插件设置</h2><h3 id="设置-JAVA-HOME"><a href="#设置-JAVA-HOME" class="headerlink" title="设置 JAVA_HOME"></a>设置 JAVA_HOME</h3><p>使用<code>jenv local</code> 设置默认jdk后,<code>JAVA_HOME</code> 仍然是空的,如果有其他软件或命令需要使用环境变量会找不到jdk.通过使用插件解决.执行命令</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv enable-plugin export<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>安装export插件后,再切换jdk版本会同步设置<code>JAVA_HOME</code>环境变量</p>
+<h3 id="设置mavne使用的jdk版本"><a href="#设置mavne使用的jdk版本" class="headerlink" title="设置mavne使用的jdk版本"></a>设置mavne使用的jdk版本</h3><p>如果希望使用maven使用的jdk版本和jenv管理的版本一直,可以安装mavne插件.执行命令</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv enable-plugin maven<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mvn -v
+
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: /usr/local/Cellar/maven/3.6.3_1/libexec
+Java version: 1.8.0_271, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home/jre
+Default locale: zh_CN, platform encoding: UTF-8
+OS name: "mac os x", version: "10.16", arch: "x86_64", family: "mac"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -466,7 +527,7 @@ F913BE58 42FEA319 F954EFDD AE881E0B
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.goujinbo.com/posts/e36969ff/">https://blog.goujinbo.com/posts/e36969ff/</a>
+                    <a href="https://blog.goujinbo.com/posts/79db5390/">https://blog.goujinbo.com/posts/79db5390/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -504,8 +565,16 @@ F913BE58 42FEA319 F954EFDD AE881E0B
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/">
-                                    <span class="chip bg-color">激活码</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">开发工具</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                                    <span class="chip bg-color">环境</span>
                                 </a>
                             
                         </div>
@@ -675,80 +744,29 @@ F913BE58 42FEA319 F954EFDD AE881E0B
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/aa766f8a/">
+                <a href="/posts/79db5390/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="star UML 3 license">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="macOS 11 使用jenv管理 多版本jdk">
                         
-                        <span class="card-title">star UML 3 license</span>
+                        <span class="card-title">macOS 11 使用jenv管理 多版本jdk</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前段时间换电脑，之前的部分软件需要重新激活。这里总结一下用到的软件的激活方式，以备不时之需。如果有能力还请支持一下开发者。
-star UML 3 是一个优秀的开源uml工具，是软件设计不可少的工具，但是价格实在是劝退门槛。以前记录的激活方式
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2018-06-10
-                        </span>
-                        <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                    常用软件
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/">
-                        <span class="chip bg-color">激活码</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/ebe42ec/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="java 快速排序实现与详解">
-                        
-                        <span class="card-title">java 快速排序实现与详解</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            快速排序是一种简单的，常用(被问到)的排序算法。这里讲述一下快速排序的逻辑原理和Java的实现代码。快速排序的思想核心，我认为就是4个字：化繁为简。  
-
-快速排序（英语：Quicksort），又称划分交换排序（partition-exch
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-22
                             </span>
                         <span class="publish-author">
                             
@@ -762,6 +780,7 @@ star UML 3 是一个优秀的开源uml工具，是软件设计不可少的工具
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -769,10 +788,51 @@ star UML 3 是一个优秀的开源uml工具，是软件设计不可少的工具
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">开发工具</span>
                     </a>
                     
+                    <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                        <span class="chip bg-color">环境</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/4a17b156/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鱍鱍
+                            
+                        </span>
+                    </div>
                 </div>
                 
             </div>

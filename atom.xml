@@ -6,7 +6,7 @@
   <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
   
   <link href="https://blog.goujinbo.com/"/>
-  <updated>2020-12-21T09:50:36.255Z</updated>
+  <updated>2020-12-22T06:29:29.873Z</updated>
   <id>https://blog.goujinbo.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>macOS 11 使用jenv管理 多版本jdk</title>
+    <link href="https://blog.goujinbo.com/posts/79db5390/"/>
+    <id>https://blog.goujinbo.com/posts/79db5390/</id>
+    <published>2020-12-22T06:03:19.000Z</published>
+    <updated>2020-12-22T06:29:29.873Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;废话&quot;&gt;&lt;a href=&quot;#废话&quot; class=&quot;headerlink&quot; title=&quot;废话&quot;&gt;&lt;/a&gt;废话&lt;/h2&gt;&lt;p&gt;mac升级big sug系统后,之前使用的jdk切换命令有些问题,使用sdkman几天后,发现兼容性还是有一些问题的.最后还是切换成</summary>
+        
+      
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="开发工具" scheme="https://blog.goujinbo.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="环境" scheme="https://blog.goujinbo.com/tags/%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
