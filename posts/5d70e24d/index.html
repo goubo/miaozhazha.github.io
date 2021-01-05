@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-22
+                    2020-12-26
                 </div>
                 
 
@@ -428,7 +428,7 @@
 </blockquote>
 <a id="more"></a>
 <p>以上摘自<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/the-new-features-of-Java-9/index.html">ibm developerworks</a></p>
-<h1 id="启动jshell"><a href="#启动jshell" class="headerlink" title="启动jshell"></a>启动jshell</h1><p>安装jdk并配置好环境之后，在控制台输入jshell启动</p>
+<h2 id="启动jshell"><a href="#启动jshell" class="headerlink" title="启动jshell"></a>启动jshell</h2><p>安装jdk并配置好环境之后，在控制台输入jshell启动</p>
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">BOBOdeRMBP:~ bobo$ java -version
 java version "9"
 Java(TM) SE Runtime Environment (build 9+181)
@@ -514,7 +514,7 @@ jshell&gt;
 Hello, Java 9, now I am in JShell!
 
 jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="引用包"><a href="#引用包" class="headerlink" title="引用包"></a>引用包</h1><p>使用<code>/imports</code>可以查看已经引用的包，包括默认引用。<br>例如我们要测试LocalDateTime类的方法，需要手动引用java.time包的内容，可以如下手动引用</p>
+<h2 id="引用包"><a href="#引用包" class="headerlink" title="引用包"></a>引用包</h2><p>使用<code>/imports</code>可以查看已经引用的包，包括默认引用。<br>例如我们要测试LocalDateTime类的方法，需要手动引用java.time包的内容，可以如下手动引用</p>
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; import java.time.*;
 
 jshell&gt; /imports 
@@ -533,7 +533,7 @@ jshell&gt; /imports
 jshell&gt; System.out.print(LocalDateTime.now())
 2018-02-06T15:58:54.532902
 jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h1><p>jshell提供有命令和代码的自动补全，无论是代码还是命令都可以使用tab键进行提示，这对于快速编写短小的测试代码提高了很大的效率。<br>代码提示：</p>
+<h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><p>jshell提供有命令和代码的自动补全，无论是代码还是命令都可以使用tab键进行提示，这对于快速编写短小的测试代码提高了很大的效率。<br>代码提示：</p>
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; LocalDate
 LocalDate       LocalDateTime   
 
@@ -580,7 +580,7 @@ jshell&gt; /e
 &lt;再次按 Tab 可查看完整文档&gt;
 
 jshell&gt; /e<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h1><ol>
+<h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><ol>
 <li>直接创建类（这里只是演示可支持类、方法的定义，非必须。）</li>
 </ol>
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; class Test{}
@@ -665,7 +665,7 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
 jshell&gt; testObj.add(i,j)
 5+9=14
 jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h1><p><code>/exit</code></p>
+<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><p><code>/exit</code></p>
 <p>以上就是对jshell的简单介绍，jshell还有更多使用的功能，例如/open命令可以将文件作为输入源等等， 大家可以自己动手实验。<br>使用jshell可以快速执行一些脚本和代码，避免了建项目、打包等冗余操作，还可以快速在远端环境测试一些代码片段，能极大缩短不必要的时间浪费。</p>
 <p><code>小技巧：在shell中，按下回车会立即执行当前代码片段，而有些方法往往需要写好几行，按下shift+enter来换行</code></p>
 
@@ -744,7 +744,7 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -1137,7 +1137,7 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2020</span>
+                <span id="year">2020-2021</span>
             
             <span id="year">2020</span>
             <a href="/about" target="_blank">鱍鱍</a>
