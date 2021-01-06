@@ -347,9 +347,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -595,7 +599,7 @@ i ==&gt; 14<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 0000 1110 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>0000 1110</code> 转10进制 等于 14</p>
 <p>i 左移一位 相当于 i * 2,<br>i 左移N位 等于 $ i * 2^N $</p>
-<h4 id="右移"><a href="#右移" class="headerlink" title="右移"></a>右移</h4><p>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）<br>java 右移分为有符号右移(&gt;&gt;&gt;) 和无符号右移(&gt;&gt;)<br>java 保存有符号(负号)整数时,最高位(最左)保存符号,0代表正数,1代表负数.保存负数时以<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%A1%A5%E7%A0%81">补码</a>形式保存,其实就是取反了.<br>以java int 为例,int 是4字节长度保存整数,一共4 * 8 = 32 位.最高位保存符号,其余31位用来保存实际数字,所以int 取值范围 为 -2147483648 ~ 2147483647 .<br>因为有0的存在,需要占一位,正数部分最大值为 $2^{31} -1$,负数为 $- ( 2^{31} )$.<br>负数数字补码部分由于0的存在,需要-1后取反<br>例如 </p>
+<h4 id="右移"><a href="#右移" class="headerlink" title="右移"></a>右移</h4><p>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）<br>java 右移分为有符号右移(&gt;&gt;&gt;,逻辑右移) 和无符号右移(&gt;&gt;,算术右移)<br>java 保存有符号(负号)整数时,最高位(最左)保存符号,0代表正数,1代表负数.保存负数时以<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%A1%A5%E7%A0%81">补码</a>形式保存,其实就是取反了.<br>以java int 为例,int 是4字节长度保存整数,一共4 * 8 = 32 位.最高位保存符号,其余31位用来保存实际数字,所以int 取值范围 为 -2147483648 ~ 2147483647 .<br>因为有0的存在,需要占一位,正数部分最大值为 $2^{31} -1$,负数为 $- ( 2^{31} )$.<br>负数数字补码部分由于0的存在,需要-1后取反<br>例如 </p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">  0 = 0000 0000 0000 0000 0000 0000 0000 0000
  10 = 0000 0000 0000 0000 0000 0000 0000 1010
  -1 = 1111 1111 1111 1111 1111 1111 1111 1111
@@ -718,7 +722,11 @@ i <span class="token operator">&amp;</span> a <span class="token operator">==</s
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -923,6 +931,14 @@ i <span class="token operator">&amp;</span> a <span class="token operator">==</s
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
