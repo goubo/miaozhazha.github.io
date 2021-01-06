@@ -6,7 +6,7 @@
   <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
   
   <link href="https://blog.goujinbo.com/"/>
-  <updated>2020-12-22T06:29:29.873Z</updated>
+  <updated>2021-01-06T08:33:14.505Z</updated>
   <id>https://blog.goujinbo.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>位运算|常用场景</title>
+    <link href="https://blog.goujinbo.com/posts/4dcfcf81/"/>
+    <id>https://blog.goujinbo.com/posts/4dcfcf81/</id>
+    <published>2021-01-06T06:21:23.000Z</published>
+    <updated>2021-01-06T08:33:14.505Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;位运算介绍&quot;&gt;&lt;a href=&quot;#位运算介绍&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>macOS 11 使用jenv管理 多版本jdk</title>
@@ -85,9 +108,9 @@
     <category term="Vert.x框架教程《图书馆信息管理系统》" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/Vert-x%E6%A1%86%E6%9E%B6%E6%95%99%E7%A8%8B%E3%80%8A%E5%9B%BE%E4%B9%A6%E9%A6%86%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E3%80%8B/"/>
     
     
-    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
-    
     <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
     
   </entry>
   
@@ -112,9 +135,9 @@
     <category term="Vert.x框架教程《图书馆信息管理系统》" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/Vert-x%E6%A1%86%E6%9E%B6%E6%95%99%E7%A8%8B%E3%80%8A%E5%9B%BE%E4%B9%A6%E9%A6%86%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E3%80%8B/"/>
     
     
-    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
-    
     <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
     
   </entry>
   
@@ -245,9 +268,9 @@
     <category term="后端框架" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
     
     
-    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
-    
     <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
     
   </entry>
   
@@ -256,7 +279,7 @@
     <link href="https://blog.goujinbo.com/posts/246cc011/"/>
     <id>https://blog.goujinbo.com/posts/246cc011/</id>
     <published>2018-01-23T06:31:49.000Z</published>
-    <updated>2020-12-22T02:29:16.993Z</updated>
+    <updated>2021-01-06T06:59:23.298Z</updated>
     
     
     <summary type="html">&lt;p&gt;两年前在公司开始负责一个底层api的项目。包含功能很简单，对接底层系统进行封装，提供一些功能实现的封装，对外提供http restful接口。主要要求是支持高并发和高稳定性。最开始的选型是用一些轻量级的http server框架。然后集成spring、mybatis等传统框架实现，后来了解了一个叫做Vert.x的nio框架。进行尝试并且经过了漫长的适应期之后。本喵只有一句话。Vert.x即是正义！&lt;/p&gt;</summary>
@@ -268,9 +291,9 @@
     <category term="后端框架" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
     
     
-    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
-    
     <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
     
   </entry>
   

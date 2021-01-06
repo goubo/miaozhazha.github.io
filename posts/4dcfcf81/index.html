@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="macOS 11 使用jenv管理 多版本jdk, 数猫">
+    <meta name="keywords" content="位运算|常用场景, 数猫">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>macOS 11 使用jenv管理 多版本jdk | 数猫</title>
+    <title>位运算|常用场景 | 数猫</title>
     <link rel="icon" type="image/png" href="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/log.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -228,12 +228,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">macOS 11 使用jenv管理 多版本jdk</h1>
+                    <h1 class="description center-align post-title">位运算|常用场景</h1>
                 </div>
             </div>
         </div>
@@ -347,21 +347,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
-                                <span class="chip bg-color">开发工具</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%8E%AF%E5%A2%83/">
-                                <span class="chip bg-color">环境</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -382,28 +370,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-22
+                    2021-01-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-22
+                    2021-01-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    809
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    7 分
                 </div>
                 
 
@@ -431,77 +419,243 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h2><p>mac升级big sug系统后,之前使用的jdk切换命令有些问题,使用sdkman几天后,发现兼容性还是有一些问题的.最后还是切换成 oracle jdk,使用jenv管理</p>
-<p>下载jdk就不废话了,记录一下安装jenv和开发环境配置的一些过程</p>
-<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><ol>
-<li>安装 <a target="_blank" rel="noopener" href="https://brew.sh/index_zh-cn">homebrew</a>,现在已经适配了<br>安装命令:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/bin/bash -c <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="token variable">)</span></span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>安装<code>openjdk </code> 如果需要<code>maven</code> ,可以直接安装<code>maven</code>,会自动依赖openjdk<br>安装命令:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew <span class="token function">install</span> openjdk
-or 
-brew <span class="token function">install</span> maven<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-<li>安装 <code>jenv</code><br>安装命令:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew <span class="token function">install</span> jenv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>下载安装<code>oracle jdk</code><br>我这里安装的是1.8和11版本,对应安装自己需要的版本</li>
-</ol>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="命令说明"><a href="#命令说明" class="headerlink" title="命令说明"></a>命令说明</h3><p>执行<code>jenv</code>命令,可以看到<code>jenv</code>的帮助文档</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ jenv                            
-
-jenv <span class="token number">0.5</span>.4
-Usage: jenv <span class="token operator">&lt;</span>command<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>args<span class="token operator">&gt;</span><span class="token punctuation">]</span>
-
-Some useful jenv commands are:
-   commands    List all available jenv commands
-   <span class="token builtin class-name">local</span>       Set or show the <span class="token builtin class-name">local</span> application-specific Java version
-   global      Set or show the global Java version
-   shell       Set or show the shell-specific Java version
-   rehash      Rehash jenv shims <span class="token punctuation">(</span>run this after installing executables<span class="token punctuation">)</span>
-   version     Show the current Java version and its origin
-   versions    List all Java versions available to jenv
-   <span class="token function">which</span>       Display the full path to an executable
-   whence      List all Java versions that contain the given executable
-   <span class="token function">add</span>         Add JDK into jenv. A <span class="token builtin class-name">alias</span> name will be generated by parsing <span class="token string">"java -version"</span>
-
-See `jenv <span class="token builtin class-name">help</span> <span class="token operator">&lt;</span>command<span class="token operator">&gt;</span>' <span class="token keyword">for</span> information on a specific command.
-For full documentation, see: https://github.com/jenv/jenv/blob/master/README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="查看安装的jdk位置"><a href="#查看安装的jdk位置" class="headerlink" title="查看安装的jdk位置"></a>查看安装的jdk位置</h3><p>执行<code>/usr/libexec/java_home -V</code> 可以看到当前系统所有的jdk,</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/usr/libexec/java_home -V<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Matching Java Virtual Machines <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>:
-    <span class="token number">11.0</span>.9 <span class="token punctuation">(</span>x86_64<span class="token punctuation">)</span> <span class="token string">"Oracle Corporation"</span> - <span class="token string">"Java SE 11.0.9"</span> /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
-    <span class="token number">1.8</span>.271.09 <span class="token punctuation">(</span>x86_64<span class="token punctuation">)</span> <span class="token string">"Oracle Corporation"</span> - <span class="token string">"Java"</span> /Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
-    <span class="token number">1.8</span>.0_271 <span class="token punctuation">(</span>x86_64<span class="token punctuation">)</span> <span class="token string">"Oracle Corporation"</span> - <span class="token string">"Java SE 8"</span> /Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home
-/Users/bobo/.jenv/versions/1.8
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="添加jdk到jenv管理中"><a href="#添加jdk到jenv管理中" class="headerlink" title="添加jdk到jenv管理中"></a>添加jdk到jenv管理中</h3><p>使用<code>jevn add &lt;path&gt;</code>命令将jdk添加到jenv管理中.例如</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ jenv <span class="token function">add</span> /Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home
-
-oracle64-1.8.0.271 added
-<span class="token number">1.8</span>.0.271 added
-<span class="token number">1.8</span> already present, skip installation<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="查看当前版本"><a href="#查看当前版本" class="headerlink" title="查看当前版本"></a>查看当前版本</h3><p>使用<code>jenv versions </code>命令,查看当前所有的版本,带<code>*</code>的是当前使用的版本,或者使用<code>jenv version</code> 查看当前使用的版本.</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv version
-
-  system
-* <span class="token number">1.8</span> <span class="token punctuation">(</span>set by /Users/bobo/.java-version<span class="token punctuation">)</span>
-  <span class="token number">1.8</span>.0.271
-  <span class="token number">11</span>
-  oracle64-1.8.0.271<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="设置系统jdk版本"><a href="#设置系统jdk版本" class="headerlink" title="设置系统jdk版本"></a>设置系统jdk版本</h3><p>使用<code>jenv local &lt;version name&gt;</code> 设置系统当前版本,例如</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv <span class="token builtin class-name">local</span> <span class="token number">1.8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="删除版本"><a href="#删除版本" class="headerlink" title="删除版本"></a>删除版本</h3><p>使用<code>jenv remove &lt;version name&gt;</code> 删除管理的版本.</p>
+                <h2 id="位运算介绍"><a href="#位运算介绍" class="headerlink" title="位运算介绍"></a>位运算介绍</h2><p>最近工作涉及一些数据传输\加密\计算相关内容,发现位运算这么好用的东西,竟然没人用.这里做一下位运算基础操作和常用场景.</p>
 <blockquote>
-<p>注意,这里只会删除jenv管理列表,不会卸载jdk,jdk仍然在磁盘中.</p>
+<p>程序中的所有数在计算机内存中都是以二进制的形式储存的。位运算就是直接对整数在内存中的二进制位进行操作。比如，and运算本来是一个逻辑运算符，但整数与整数之间也可以进行and运算。举个例子，6的二进制是110，11的二进制是1011，那么6 and 11的结果就是2，它是二进制对应位进行逻辑运算的结果（0表示False，1表示True，空位都当0处理）。  摘自<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BD%8D%E8%BF%90%E7%AE%97">百度百科</a>  </p>
+<p>位操作是程序设计中对位模式或二进制数的一元和二元操作。在许多古老的微处理器上，位运算比加减运算略快，通常位运算比乘除法运算要快很多。在现代架构中，情况并非如此：位运算的运算速度通常与加法运算相同（仍然快于乘法运算）。摘自<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E6%93%8D%E4%BD%9C">维基百科</a></p>
 </blockquote>
-<h2 id="插件设置"><a href="#插件设置" class="headerlink" title="插件设置"></a>插件设置</h2><h3 id="设置-JAVA-HOME"><a href="#设置-JAVA-HOME" class="headerlink" title="设置 JAVA_HOME"></a>设置 JAVA_HOME</h3><p>使用<code>jenv local</code> 设置默认jdk后,<code>JAVA_HOME</code> 仍然是空的,如果有其他软件或命令需要使用环境变量会找不到jdk.通过使用插件解决.执行命令</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv enable-plugin <span class="token builtin class-name">export</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>安装export插件后,再切换jdk版本会同步设置<code>JAVA_HOME</code>环境变量</p>
-<h3 id="设置mavne使用的jdk版本"><a href="#设置mavne使用的jdk版本" class="headerlink" title="设置mavne使用的jdk版本"></a>设置mavne使用的jdk版本</h3><p>如果希望使用maven使用的jdk版本和jenv管理的版本一直,可以安装mavne插件.执行命令</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jenv enable-plugin maven<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mvn -v
+<p>位运算一般用于二进制数据计算,但总所周知,计算机所有的数据都是二进制.现代高级语言中,有各种函数和运算符可以直接对数字进行计算,但是需要特定的场景使用位运算能提升运行效率和稳定性.</p>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>位运算包含 与或非,异或,位移</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+<th>运算规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>与</td>
+<td>两个位都为1时，结果才为1</td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+<td>或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>异或</td>
+<td>两个位相同为0，相异为1</td>
+</tr>
+<tr>
+<td>~</td>
+<td>取反</td>
+<td>0变1，1变0</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+<td>各二进位全部左移若干位，高位丢弃，低位补0</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+<td>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+</tr>
+</tbody></table>
+<h3 id="与"><a href="#与" class="headerlink" title="与"></a>与</h3><p>与运算,两个位都为1时，结果才为1  </p>
+<table>
+<thead>
+<tr>
+<th>输入A</th>
+<th>输入B</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<h3 id="或"><a href="#或" class="headerlink" title="或"></a>或</h3><p>或运算两个位都为0时，结果才为0</p>
+<table>
+<thead>
+<tr>
+<th>输入A</th>
+<th>输入B</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<h3 id="非、取反"><a href="#非、取反" class="headerlink" title="非、取反"></a>非、取反</h3><p>取反运算 0变1，1变0</p>
+<table>
+<thead>
+<tr>
+<th>输入A</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><p>异或运算 两个位相同为0，相异为1</p>
+<table>
+<thead>
+<tr>
+<th>输入A</th>
+<th>输入B</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h3 id="按位与-按位或-按位非-按位异或"><a href="#按位与-按位或-按位非-按位异或" class="headerlink" title="按位与 按位或 按位非 按位异或"></a>按位与 按位或 按位非 按位异或</h3><p>两个二进制数字,右端对齐后,逐位进行位计算的到的结果<br>例如</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jshell&gt; 28 | 5
+$19 ==&gt; 29<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>将十进制转二进制 28 = <code>0001 1100</code> , 5 = <code>0000 0101</code><br>按位或运算</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">    0001 1100
+OR  0000 0101
+----------------
+    0001 0101<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>0001 0101 = 29<br>其他运算相同的操作逻辑</p>
+<h3 id="位移运算"><a href="#位移运算" class="headerlink" title="位移运算"></a>位移运算</h3><h4 id="左移"><a href="#左移" class="headerlink" title="左移"></a>左移</h4><p>将一个运算对象的各二进制位全部左移若干位（左边的二进制位丢弃，右边补0）<br>例如 </p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jshell&gt; int i = 7
+i ==&gt; 7
 
-Apache Maven <span class="token number">3.6</span>.3 <span class="token punctuation">(</span>cecedd343002696d0abb50b32b541b8a6ba2883f<span class="token punctuation">)</span>
-Maven home: /usr/local/Cellar/maven/3.6.3_1/libexec
-Java version: <span class="token number">1.8</span>.0_271, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home/jre
-Default locale: zh_CN, platform encoding: UTF-8
-OS name: <span class="token string">"mac os x"</span>, version: <span class="token string">"10.16"</span>, arch: <span class="token string">"x86_64"</span>, family: <span class="token string">"mac"</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+jshell&gt; i &lt;&lt;= 1
+$5 ==&gt; 14
+
+jshell&gt; i
+i ==&gt; 14<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>位于计算是二进制操作,先把7转为二进制 <code>7 = 0000 0111 </code><br>将 所有位向左移动1位,最右位补0.</p>
+<pre class="line-numbers language-none"><code class="language-none">0000 0111 &lt;&lt; 1 
+0000 1110 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>0000 1110</code> 转10进制 等于 14</p>
+<p>i 左移一位 相当于 i * 2,<br>i 左移N位 等于 $ i * 2^N $</p>
+<h4 id="右移"><a href="#右移" class="headerlink" title="右移"></a>右移</h4><p>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）<br>java 右移分为有符号右移(&gt;&gt;&gt;) 和无符号右移(&gt;&gt;)<br>java 保存有符号(负号)整数时,最高位(最左)保存符号,0代表正数,1代表负数.保存负数时以<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%A1%A5%E7%A0%81">补码</a>形式保存,其实就是取反了.<br>以java int 为例,int 是4字节长度保存整数,一共4 * 8 = 32 位.最高位保存符号,其余31位用来保存实际数字,所以int 取值范围 为 -2147483648 ~ 2147483647 .<br>因为有0的存在,需要占一位,正数部分最大值为 $2^{31} -1$,负数为 $- ( 2^{31} )$.<br>负数数字补码部分由于0的存在,需要-1后取反<br>例如 </p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">  0 = 0000 0000 0000 0000 0000 0000 0000 0000
+ 10 = 0000 0000 0000 0000 0000 0000 0000 1010
+ -1 = 1111 1111 1111 1111 1111 1111 1111 1111
+-10 = 1111 1111 1111 1111 1111 1111 1111 0110
+
+ 10 &gt;&gt; 1 = 5
+  5 = 0000 0000 0000 0000 0000 0000 0000 0101
+ -10 &gt;&gt; 1 = -5
+ -5 = 1111 1111 1111 1111 1111 1111 1111 1011
+ 
+ 10 &gt;&gt;&gt; 1 = 5 
+  5 = 0000 0000 0000 0000 0000 0000 0000 0101
+ -10 &gt;&gt;&gt; 1 = 2147483643
+ 2147483643 = 0111 1111 1111 1111 1111 1111 1111 1011
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>有符号右移时,高位会补符号位的值,负数右移前面会补1<br>无法好位移时,高位直接补0,负数右移后,符号位补0变正数</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h3 id="位计算"><a href="#位计算" class="headerlink" title="位计算"></a>位计算</h3><p>位计算用的最多的应该是权限判断相关的,1个int类型,32个有效长度,可以保存32种可叠加的状态.例如linux的权限,使用3位进行保存读写执行状态,其中,1为是否可执行,2为是否可写,4为是否可读.把这三个数转换为二进制,就能发现.</p>
+<pre class="line-numbers language-bit" data-language="bit"><code class="language-bit">1  =&gt;  0001  ==  1 &lt;&lt; 0
+2  =&gt;  0010  ==  1 &lt;&lt; 1
+4  =&gt;  0100  ==  1 &lt;&lt; 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>一个文件初始为0000,使用或运算赋权可读4,再叠加赋权可写权限2,</p>
+<pre class="line-numbers language-bit" data-language="bit"><code class="language-bit">    0 = 0000
+    4 = 0100
+    2 = 0010
+| -----------
+        0110 = 6
+0 | 4 | 2 = 6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>linux 可读可写,不可执行权限即为6.<br>验证是否有权限,则使用与运算,判断对应位是否为1.<br>例如,文件权限为6 ,判断是否包含写权限2.</p>
+<pre class="line-numbers language-bit" data-language="bit"><code class="language-bit">    6 = 0110
+    2 = 0010
+&amp; -----------
+        0010 = 2
+        
+(6 &amp; 2 == 2) = true 验证文件具有写权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>删除权限需要使用异或计算,相同位为0,不同位为1<br>例如,文件权限为6 ,删除写权限2.</p>
+<pre class="line-numbers language-bit" data-language="bit"><code class="language-bit">    6 = 0110
+    2 = 0010
+^ -----------
+        0100 = 4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>异或运算可以用来排他计算.一个非常经典的算法题:一个int数组,长度为奇数,除一个数字外,其他的数字都是成对出现,最快找到这个数.这时就需要使用异或运算,遍历每个元素进行异或,相同得0,不同得1,结果就是最不同的孤寡蛙.</p>
+<h3 id="位移运算-1"><a href="#位移运算-1" class="headerlink" title="位移运算"></a>位移运算</h3><p>位移运算最简单的用处就是快速 乘除 2 以及2的指数.运算速度比乘除运算符要快.但是只适合整数,小数的二进制以指数方式保存,无法使用位移运算.</p>
+<h2 id="汇总"><a href="#汇总" class="headerlink" title="汇总"></a>汇总</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//声明权限</span>
+<span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">// 赋权</span>
+i <span class="token operator">|=</span> a<span class="token punctuation">;</span> <span class="token comment">// i = i | a;</span>
+<span class="token comment">// 回收</span>
+i <span class="token operator">^=</span> a<span class="token punctuation">;</span><span class="token comment">// i = i ^ a;</span>
+<span class="token comment">//判断</span>
+i <span class="token operator">&amp;</span> a <span class="token operator">==</span> a<span class="token punctuation">;</span> <span class="token comment">// boolean</span>
+
+<span class="token comment">//判断是否为偶数</span>
+<span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">;</span> <span class="token comment">// i % 2 != 0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -527,7 +681,7 @@ OS name: <span class="token string">"mac os x"</span>, version: <span class="tok
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.goujinbo.com/posts/79db5390/">https://blog.goujinbo.com/posts/79db5390/</a>
+                    <a href="https://blog.goujinbo.com/posts/4dcfcf81/">https://blog.goujinbo.com/posts/4dcfcf81/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -564,19 +718,7 @@ OS name: <span class="token string">"mac os x"</span>, version: <span class="tok
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
-                                    <span class="chip bg-color">开发工具</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%8E%AF%E5%A2%83/">
-                                    <span class="chip bg-color">环境</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -744,9 +886,10 @@ OS name: <span class="token string">"mac os x"</span>, version: <span class="tok
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/posts/4dcfcf81/">
                     <div class="card-image">
@@ -764,9 +907,51 @@ OS name: <span class="token string">"mac os x"</span>, version: <span class="tok
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-06
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/79db5390/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="macOS 11 使用jenv管理 多版本jdk">
+                        
+                        <span class="card-title">macOS 11 使用jenv管理 多版本jdk</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -780,41 +965,20 @@ OS name: <span class="token string">"mac os x"</span>, version: <span class="tok
                     </div>
                 </div>
                 
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/4a17b156/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-21
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            鱍鱍
-                            
-                        </span>
-                    </div>
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">开发工具</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                        <span class="chip bg-color">环境</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -943,6 +1107,13 @@ OS name: <span class="token string">"mac os x"</span>, version: <span class="tok
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
