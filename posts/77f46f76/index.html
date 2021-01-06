@@ -426,22 +426,22 @@
                 <p>　　java9正式发布已经有一段时间了，作为一个思想<del>激进</del>__开放__，勇于探索的喵，本着拥抱新特性的心态。<del>第一时间</del>对java的文档进行了拜读，结合这段时间<del>零零散散</del>__持续__的测试和理解，记录下来以后可能会用到的几个特性。<a id="more"></a></p>
 <h2 id="JShell"><a href="#JShell" class="headerlink" title="JShell"></a>JShell</h2><p>Java 9 中引入了交互式编程环境（REPL），这就是JShell。JShell可以执行Java代码，并且立即返回执行结果。可以用来测试一些简单的方法，函数以及算法。本喵或许可以告别创建一个Text.java然后写一个main方法来测试一些函数的做法，使用JShell可以快速地执行代码，节省了项目编译的时间。付出的代价就是需要多多练习脱离IDE码代码的技能了。<br>使用方法：安装好Java9并配置好运行环境后，在命令行输入</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">BOBOdeRMBP:~ bobo$ java -version
-java version <span class="token string">"9"</span>
-Java<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime Environment <span class="token punctuation">(</span>build <span class="token number">9</span>+181<span class="token punctuation">)</span>
-Java HotSpot<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span>-Bit Server VM <span class="token punctuation">(</span>build <span class="token number">9</span>+181, mixed mode<span class="token punctuation">)</span>
+java version "9"
+Java(TM) SE Runtime Environment (build 9+181)
+Java HotSpot(TM) 64-Bit Server VM (build 9+181, mixed mode)
 BOBOdeRMBP:~ bobo$ jshell 
-<span class="token operator">|</span>  欢迎使用 JShell -- 版本 <span class="token number">9</span>
-<span class="token operator">|</span>  要大致了解该版本, 请键入: /help intro
+|  欢迎使用 JShell -- 版本 9
+|  要大致了解该版本, 请键入: /help intro
 
-jshell<span class="token operator">&gt;</span> 
+jshell&gt; 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>即可进入JShell。<br>测试一下基本功能。声明一个int类型的变量，并未这个变量赋值。然后打印出变量信息。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jshell<span class="token operator">&gt;</span> int i <span class="token operator">=</span> <span class="token number">10</span>
-i <span class="token operator">==</span><span class="token operator">&gt;</span> <span class="token number">10</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jshell&gt; int i = 10
+i ==&gt; 10
 
-jshell<span class="token operator">&gt;</span> System.out.print<span class="token punctuation">(</span><span class="token string">"i:"</span>+i<span class="token punctuation">)</span>
+jshell&gt; System.out.print("i:"+i)
 i:10
-jshell<span class="token operator">&gt;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <a href="/posts/5d70e24d/" title="查看更多介绍。。。">查看更多介绍。。。</a>
 
 <h2 id="不可变集合类的工厂方法"><a href="#不可变集合类的工厂方法" class="headerlink" title="不可变集合类的工厂方法"></a>不可变集合类的工厂方法</h2><p>在处理多线程操作数据时，大多数时候数据线程安全和脏数据问题都会被掩盖。在Java8以及更早版本，我们创建一个不可变集合对象时通常使用Collections.unmodifiableXXX的方法。当我们需要初始化这样一个不可变集合的时候就显得比较麻烦了。<br>在Java9中，Oracle引用了一些非常方便的工厂方法可以用来创建各种不可变集合。</p>
