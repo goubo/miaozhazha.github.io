@@ -85,6 +85,9 @@ document.getElementById("font_size").onchange = function (e) {
     drawWatermark()
 }
 
+document.getElementById("inp_text").onchange = function (e) {
+    drawWatermark()
+}
 document.getElementById("spin_num").onchange = function (e) {
     drawWatermark()
 }

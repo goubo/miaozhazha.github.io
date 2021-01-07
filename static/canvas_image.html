@@ -6,27 +6,29 @@
 
 </head>
 <body>
-<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="file_select">
-<!--<input type="radio" name="Watermark_type" id="Watermark_type_text"/><label for="Watermark_type_text">文字水印</label>-->
-<!--<input type="radio" name="Watermark_type" id="Watermark_type_image"/><label for="Watermark_type_image">图片水印</label>-->
+<H1>添加水印小工具</H1>
+<a href="/">数猫<a><br>
 
-
-<div>
-    水印:<input type="text" value="@小鱼水印" id="inp_text"><br>
-    铺满:<input type="radio" name="tiled_type" id="tiled_type_true"/><label for="tiled_type_true">铺满</label>
-    <input type="radio" name="tiled_type" id="tiled_type_false" checked/> <label for="tiled_type_false">单个</label>
+    <!--<input type="radio" name="Watermark_type" id="Watermark_type_text"/><label for="Watermark_type_text">文字水印</label>-->
+    <!--<input type="radio" name="Watermark_type" id="Watermark_type_image"/><label for="Watermark_type_image">图片水印</label>-->
+    <div>
+        <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="file_select"><br>
+        水印:<input type="text" value="@小鱼水印" id="inp_text"><br>
+        铺满:<input type="radio" name="tiled_type" id="tiled_type_true"/><label for="tiled_type_true">铺满</label>
+        <input type="radio" name="tiled_type" id="tiled_type_false" checked/> <label for="tiled_type_false">单个</label>
+        <br>
+        字号:<input type="number" id="font_size" min="12" max="100" value="42"><br>
+        旋转:<input type="number" id="spin_num" min="-360" max="360" value="0" step="5"><br>
+        颜色:<input type="color" id="inp_color" value="#F9399F"/><br>
+        透明度:<input type="number" id="inp_globalAlpha" value="50" min="0" max="100" step="10"/><br>
+        密度:<input type="number" id="inp_density" value="20" min="-10" max="100" step="3"/><br>
+        <button id="save_button" onclick="saveImage()">保存</button>
+    </div>
     <br>
-    字号:<input type="number" id="font_size" min="12" max="100" value="42"><br>
-    旋转:<input type="number" id="spin_num" min="-360" max="360" value="0" step="5"><br>
-    颜色:<input type="color" id="inp_color" value="#F9399F"/><br>
-    透明度:<input type="number" id="inp_globalAlpha" value="50" min="0" max="100" step="10"/><br>
-    密度:<input type="number" id="inp_density" value="20" min="-10" max="100" step="3"/><br>
-    <button id="save_button" onclick="saveImage()">保存</button>
-</div>
-<br>
-<span id="xy_span"></span>
-<br>
-<canvas id="canvas" style="border-style:solid;"></canvas>
+    <span id="xy_span"></span>
+    <br>
+    <canvas id="canvas" style="border-style:solid;"></canvas
 </body>
 <script src="canvas_image.js"></script>
+
 </html>
