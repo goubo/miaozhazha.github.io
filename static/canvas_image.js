@@ -1,6 +1,6 @@
 const image_input = document.getElementById("file_select"), cvs = document.getElementById('canvas'),
     ctx = cvs.getContext('2d')
-let image_object, image_name, font_size = 48, txt_size = 0, onmous_x = 0, onmous_y = 0, pyl_x = 0, pyl_y = 0
+let image_object, image_name, txt_size = 0, onmous_x = 0, onmous_y = 0, pyl_x = 0, pyl_y = 0
 image_input.addEventListener("change", function () {
     const file = this.files[0]
     if (!/image\/\w+/.test(file.type)) {
@@ -29,7 +29,8 @@ function drawToCanvas() {
 function drawWatermark() {
     let tiled = document.getElementById("tiled_type_true").checked
     let txt = document.getElementById("inp_text").value
-    let density = document.getElementById("inp_density").value
+    let font_size = document.getElementById("font_size").value * 1
+    let density = document.getElementById("inp_density").value * 1
     txt_size = txt.length
     ctx.clearRect(0, 0, cvs.width, cvs.height)
     if (onmous_x === 0 && onmous_y === 0) {
@@ -73,7 +74,6 @@ cvs.onmousedown = function (e) {
     drawWatermark()
 }
 document.getElementById("font_size").onchange = function (e) {
-    font_size = this.value
     drawWatermark()
 }
 document.getElementById("inp_text").onchange = function (e) {
