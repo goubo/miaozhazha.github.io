@@ -99,7 +99,7 @@ document.getElementById("tiled_type_false").onchange = function (e) {
 
 function saveImage() {
     var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
-    save_link.href = cvs.toDataURL()
+    save_link.href = cvs.toDataURL("image/jpeg")
     save_link.download = image_name || "小鱼水印"
     var event = document.createEvent('MouseEvents')
     event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
