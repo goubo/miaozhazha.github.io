@@ -11,9 +11,8 @@ image_input.addEventListener("change", function () {
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = function (e) {
-        const data = this.result
         image_object = new Image()
-        image_object.src = data
+        image_object.src = this.result
         image_object.onload = function () {
             drawWatermark()
         }

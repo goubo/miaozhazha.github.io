@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>linux修改文本编码格式 ascii 转 utf-8</title>
+      <link href="posts/5e1a3753/"/>
+      <url>posts/5e1a3753/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ascii-转-utf-8-有-BOM"><a href="#ascii-转-utf-8-有-BOM" class="headerlink" title="ascii 转 utf-8 有 BOM"></a>ascii 转 utf-8 有 BOM</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># ll</span>total <span class="token number">8</span>-rw-------. <span class="token number">1</span> root root <span class="token number">1621</span> Sep <span class="token number">28</span> <span class="token number">19</span>:35 anaconda-ks.cfg-rw-r--r--  <span class="token number">1</span> root root    <span class="token number">8</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:37 test.txt<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat test.txt</span>abcdefg<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file test.txt</span>test.txt: ASCII text<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># echo -ne '\xEF\xBB\xBF' &gt; out.txt</span><span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat test.txt &gt;&gt; out.txt</span><span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># ll</span>total <span class="token number">12</span>-rw-------. <span class="token number">1</span> root root <span class="token number">1621</span> Sep <span class="token number">28</span> <span class="token number">19</span>:35 anaconda-ks.cfg-rw-r--r--  <span class="token number">1</span> root root   <span class="token number">11</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:40 out.txt-rw-r--r--  <span class="token number">1</span> root root    <span class="token number">8</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:37 test.txt<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file test.txt</span>test.txt: ASCII text<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file out.txt</span>out.txt: UTF-8 Unicode <span class="token punctuation">(</span>with BOM<span class="token punctuation">)</span> text<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat out.txt</span>abcdefg<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> 编码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>位运算|常用场景</title>
       <link href="posts/4dcfcf81/"/>
       <url>posts/4dcfcf81/</url>
@@ -91,9 +112,9 @@
       
         <tags>
             
-            <tag> Vert.x </tag>
-            
             <tag> java </tag>
+            
+            <tag> Vert.x </tag>
             
         </tags>
       
@@ -122,9 +143,9 @@
       
         <tags>
             
-            <tag> Vert.x </tag>
-            
             <tag> java </tag>
+            
+            <tag> Vert.x </tag>
             
         </tags>
       
@@ -278,9 +299,9 @@
       
         <tags>
             
-            <tag> Vert.x </tag>
-            
             <tag> java </tag>
+            
+            <tag> Vert.x </tag>
             
         </tags>
       
@@ -307,9 +328,9 @@
       
         <tags>
             
-            <tag> Vert.x </tag>
-            
             <tag> java </tag>
+            
+            <tag> Vert.x </tag>
             
         </tags>
       

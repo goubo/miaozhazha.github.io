@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JShell, 数猫">
+    <meta name="keywords" content="linux修改文本编码格式 ascii 转 utf-8, 数猫">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JShell | 数猫</title>
+    <title>linux修改文本编码格式 ascii 转 utf-8 | 数猫</title>
     <link rel="icon" type="image/png" href="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/log.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -228,12 +228,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JShell</h1>
+                    <h1 class="description center-align post-title">linux修改文本编码格式 ascii 转 utf-8</h1>
                 </div>
             </div>
         </div>
@@ -349,23 +349,18 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BC%96%E7%A0%81/">
+                                <span class="chip bg-color">编码</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                开发
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -374,28 +369,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-02-06
+                    2021-01-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-26
+                    2021-01-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    143
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    1 分
                 </div>
                 
 
@@ -423,252 +418,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的结果会被自动保存下来，以数字编号作为引用，类似$1和$2这样的名称。可以在后续的表达式中引用之前语句的运行结果。在jshell中，除了表达式之外，还可以创建Java类和方法。jshell也有基本的代码完成功能。</p>
-</blockquote>
-<a id="more"></a>
-<p>以上摘自<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/the-new-features-of-Java-9/index.html">ibm developerworks</a></p>
-<h2 id="启动jshell"><a href="#启动jshell" class="headerlink" title="启动jshell"></a>启动jshell</h2><p>安装jdk并配置好环境之后，在控制台输入jshell启动</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">BOBOdeRMBP:~ bobo$ java -version
-java version "9"
-Java(TM) SE Runtime Environment (build 9+181)
-Java HotSpot(TM) 64-Bit Server VM (build 9+181, mixed mode)
-BOBOdeRMBP:~ bobo$ jshell 
-|  欢迎使用 JShell -- 版本 9
-|  要大致了解该版本, 请键入: /help intro
-
-jshell&gt; /help intro
-|  
-|  intro
-|  
-|  使用 jshell 工具可以执行 Java 代码, 从而立即获取结果。
-|  您可以输入 Java 定义 (变量, 方法, 类, 等等), 例如:  int x = 8
-|  或 Java 表达式, 例如:  x + x
-|  或 Java 语句或导入。
-|  这些小块的 Java 代码称为 '片段'。
-|  
-|  这些 jshell 命令还可以让您了解和
-|  控制您正在执行的操作, 例如:  /list
-|  
-|  有关命令的列表, 请执行: /help
-jshell&gt; /help
-|  键入 Java 语言表达式, 语句或声明。
-|  或者键入以下命令之一:
-|  /list [&lt;名称或 id&gt;|-all|-start]
-|  	列出您键入的源
-|  /edit &lt;名称或 id&gt;
-|  	编辑按名称或 id 引用的源条目
-|  /drop &lt;名称或 id&gt;
-|  	删除按名称或 id 引用的源条目
-|  /save [-all|-history|-start] &lt;文件&gt;
-|  	将片段源保存到文件。
-|  /open &lt;file&gt;
-|  	打开文件作为源输入
-|  /vars [&lt;名称或 id&gt;|-all|-start]
-|  	列出已声明变量及其值
-|  /methods [&lt;名称或 id&gt;|-all|-start]
-|  	列出已声明方法及其签名
-|  /types [&lt;名称或 id&gt;|-all|-start]
-|  	列出已声明的类型
-|  /imports 
-|  	列出导入的项
-|  /exit 
-|  	退出 jshell
-|  /env [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;] ...
-|  	查看或更改评估上下文
-|  /reset [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;]...
-|  	重启 jshell
-|  /reload [-restore] [-quiet] [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;]...
-|  	重置和重放相关历史记录 -- 当前历史记录或上一个历史记录 (-restore)
-|  /history 
-|  	您键入的内容的历史记录
-|  /help [&lt;command&gt;|&lt;subject&gt;]
-|  	获取 jshell 的相关信息
-|  /set editor|start|feedback|mode|prompt|truncation|format ...
-|  	设置 jshell 配置信息
-|  /? [&lt;command&gt;|&lt;subject&gt;]
-|  	获取 jshell 的相关信息
-|  /! 
-|  	重新运行上一个片段
-|  /&lt;id&gt; 
-|  	按 id 重新运行片段
-|  /-&lt;n&gt; 
-|  	重新运行前面的第 n 个片段
-|  
-|  有关详细信息, 请键入 '/help', 后跟
-|  命令或主题的名称。
-|  例如 '/help /list' 或 '/help intro'。主题:
-|  
-|  intro
-|  	jshell 工具的简介
-|  shortcuts
-|  	片段和命令输入提示, 信息访问以及
-|  	自动代码生成的按键说明
-|  context
-|  	/env /reload 和 /reset 的评估上下文选项
-
-jshell&gt; 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我们使用<a href="/posts/77f46f76/" title="hello-java-9">hello-java-9</a>一文中的代码进行测试，直接使用jshell，不去创建项目，配置maven，打包运行来测试Java9语法新接口和特性。<br>首先我们先测试一下基本功能。</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt;  System.out.println("Hello, Java 9, now I am in JShell!")
-Hello, Java 9, now I am in JShell!
-
-jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="引用包"><a href="#引用包" class="headerlink" title="引用包"></a>引用包</h2><p>使用<code>/imports</code>可以查看已经引用的包，包括默认引用。<br>例如我们要测试LocalDateTime类的方法，需要手动引用java.time包的内容，可以如下手动引用</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; import java.time.*;
-
-jshell&gt; /imports 
-|    import java.io.*
-|    import java.math.*
-|    import java.net.*
-|    import java.nio.file.*
-|    import java.util.*
-|    import java.util.concurrent.*
-|    import java.util.function.*
-|    import java.util.prefs.*
-|    import java.util.regex.*
-|    import java.util.stream.*
-|    import java.time.*
-
-jshell&gt; System.out.print(LocalDateTime.now())
-2018-02-06T15:58:54.532902
-jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><p>jshell提供有命令和代码的自动补全，无论是代码还是命令都可以使用tab键进行提示，这对于快速编写短小的测试代码提高了很大的效率。<br>代码提示：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; LocalDate
-LocalDate       LocalDateTime   
-
-签名:
-java.time.LocalDate
-
-&lt;再次按 Tab 可查看文档&gt;
-
-jshell&gt; LocalDate
-java.time.LocalDate
-A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03 .
- LocalDate is an immutable date-time object that represents a date, often viewed as
-year-month-day. Other date fields, such as day-of-year, day-of-week and week-of-year, can also
-be accessed. For example, the value "2nd October 2007" can be stored in a LocalDate .
-This class does not store or represent a time or time-zone. Instead, it is a description of the
-date, as used for birthdays. It cannot represent an instant on the time-line without additional
-information such as an offset or time-zone.
-The ISO-8601 calendar system is the modern civil calendar system used today in most of the
-world. It is equivalent to the proleptic Gregorian calendar system, in which today's rules for
-leap years are applied for all time. For most applications written today, the ISO-8601 rules
-are entirely suitable. However, any application that makes use of historical dates, and
-requires them to be accurate will find the ISO-8601 approach unsuitable.
-This is a value-based class; use of identity-sensitive operations (including reference equality
-( == ), identity hash code, or synchronization) on instances of LocalDate may have
-unpredictable results and should be avoided. The equals method should be used for comparisons.
-
-jshell&gt; LocalDate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>命令提示：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; /e
-/edit    /env     /exit    
-
-&lt;再次按 Tab 可查看提要&gt;
-
-jshell&gt; /e
-/edit
-编辑按名称或 id 引用的源条目
-
-/env
-查看或更改评估上下文
-
-/exit
-退出 jshell
-
-&lt;再次按 Tab 可查看完整文档&gt;
-
-jshell&gt; /e<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><ol>
-<li>直接创建类（这里只是演示可支持类、方法的定义，非必须。）</li>
-</ol>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; class Test{}
-|  已创建 类 Test
-
-jshell&gt; class Test{
-   ...&gt; public void add(int a,int b){System.out.print(a+b);}
-   ...&gt; }
-|  已替换 类 Test
-
-jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重新定义相同名字的片段会直接覆盖上一个片段。<br>2. 创建对象</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; Test testObj = new Test()
-testObj ==&gt; Test@6fd02e5
-
-jshell&gt; testObj.add(3,4)
-7
-jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="3">
-<li>直接定义方法、对象</li>
-</ol>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">jshell<span class="token operator">&gt;</span> <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">5</span>
-i <span class="token operator">==</span><span class="token operator">&gt;</span> <span class="token number">5</span>
-
-jshell<span class="token operator">&gt;</span> <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">9</span>
-j <span class="token operator">==</span><span class="token operator">&gt;</span> <span class="token number">9</span>
-
-jshell<span class="token operator">&gt;</span> <span class="token keyword">void</span> <span class="token function">product</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>a<span class="token operator">+</span><span class="token string">"*"</span><span class="token operator">+</span>b<span class="token operator">+</span><span class="token string">"="</span><span class="token operator">+</span><span class="token punctuation">(</span>a<span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-<span class="token operator">|</span>  已创建 方法 <span class="token function">product</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">)</span> 
-
-jshell<span class="token operator">&gt;</span> <span class="token function">product</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span>
-<span class="token number">5</span><span class="token operator">*</span><span class="token number">9</span><span class="token operator">=</span><span class="token number">45</span>
-jshell<span class="token operator">&gt;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="4">
-<li>编辑代码片段<br>除了再写一个同名的片段覆盖之前代码外，我们可以使用<code>/edit</code>命令对之前的代码片段进行修改。<br>例如我们定义的product方法输出的是a*b=结果，而Test类的add方法则直接输出的是结果。我们可以修改add方法的输出。<br>先试用/list方法查看所有的片段</li>
-</ol>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; /list
-
-   2 : class Test{
-       public void add(int a,int b){System.out.print(a+b);}
-       }
-   3 : Test testObj = new Test();
-   4 : testObj.add(3,4)
-   5 : int i = 5;
-   6 : int j = 9;
-   7 : void product(int a,int b){System.out.print(a+"*"+b+"="+(a*b));}
-   8 : product(i,j)
-
-jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>使用/edge命令可以编辑全部，或指定的片段。<br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/edit-all.png"></fancybox><br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/edit.png"></fancybox><br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/edit-test.png"></fancybox><br>我们直接在jshell edit pad修改Test类为一下代码。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token string">"+"</span> <span class="token operator">+</span> b <span class="token operator">+</span> <span class="token string">"="</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>点击Accept，查看控制台</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; /edit Test
-Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.FoldingData
-Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=⌘.intellij.codeInsight.editorActions.FoldingData
-Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/ReferenceData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=⌘.intellij.codeInsight.editorActions.ReferenceData
-Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/ReferenceData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=⌘.intellij.codeInsight.editorActions.ReferenceData
-|  已修改 类 Test
-
-jshell&gt; /list
-
-   3 : Test testObj = new Test();
-   4 : testObj.add(3,4)
-   5 : int i = 5;
-   6 : int j = 9;
-   7 : void product(int a,int b){System.out.print(a+"*"+b+"="+(a*b));}
-   8 : product(i,j)
-   9 : class Test {
-           public void add(int a, int b) {
-               System.out.print(a + "+" + b + "=" + (a + b));
-           }
-       }
-
-jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最后测试一下修改后的代码</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt; product(i,j)
-5*9=45
-jshell&gt; testObj.add(i,j)
-5+9=14
-jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><p><code>/exit</code></p>
-<p>以上就是对jshell的简单介绍，jshell还有更多使用的功能，例如/open命令可以将文件作为输入源等等， 大家可以自己动手实验。<br>使用jshell可以快速执行一些脚本和代码，避免了建项目、打包等冗余操作，还可以快速在远端环境测试一些代码片段，能极大缩短不必要的时间浪费。</p>
-<p><code>小技巧：在shell中，按下回车会立即执行当前代码片段，而有些方法往往需要写好几行，按下shift+enter来换行</code></p>
-
+                <h2 id="ascii-转-utf-8-有-BOM"><a href="#ascii-转-utf-8-有-BOM" class="headerlink" title="ascii 转 utf-8 有 BOM"></a>ascii 转 utf-8 有 BOM</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># ll</span>
+total <span class="token number">8</span>
+-rw-------. <span class="token number">1</span> root root <span class="token number">1621</span> Sep <span class="token number">28</span> <span class="token number">19</span>:35 anaconda-ks.cfg
+-rw-r--r--  <span class="token number">1</span> root root    <span class="token number">8</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:37 test.txt
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat test.txt</span>
+abcdefg
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file test.txt</span>
+test.txt: ASCII text
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># echo -ne '\xEF\xBB\xBF' &gt; out.txt</span>
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat test.txt &gt;&gt; out.txt</span>
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># ll</span>
+total <span class="token number">12</span>
+-rw-------. <span class="token number">1</span> root root <span class="token number">1621</span> Sep <span class="token number">28</span> <span class="token number">19</span>:35 anaconda-ks.cfg
+-rw-r--r--  <span class="token number">1</span> root root   <span class="token number">11</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:40 out.txt
+-rw-r--r--  <span class="token number">1</span> root root    <span class="token number">8</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:37 test.txt
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file test.txt</span>
+test.txt: ASCII text
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file out.txt</span>
+out.txt: UTF-8 Unicode <span class="token punctuation">(</span>with BOM<span class="token punctuation">)</span> text
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat out.txt</span>
+abcdefg
+<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -694,7 +465,7 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.goujinbo.com/posts/5d70e24d/">https://blog.goujinbo.com/posts/5d70e24d/</a>
+                    <a href="https://blog.goujinbo.com/posts/5e1a3753/">https://blog.goujinbo.com/posts/5e1a3753/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -732,8 +503,12 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BC%96%E7%A0%81/">
+                                    <span class="chip bg-color">编码</span>
                                 </a>
                             
                         </div>
@@ -903,52 +678,48 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/ebe42ec/">
+                <a href="/posts/5e1a3753/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="java 快速排序实现与详解">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="linux修改文本编码格式 ascii 转 utf-8">
                         
-                        <span class="card-title">java 快速排序实现与详解</span>
+                        <span class="card-title">linux修改文本编码格式 ascii 转 utf-8</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            快速排序是一种简单的，常用(被问到)的排序算法。这里讲述一下快速排序的逻辑原理和Java的实现代码。快速排序的思想核心，我认为就是4个字：化繁为简。  
-
-快速排序（英语：Quicksort），又称划分交换排序（partition-exch
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2018-03-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-09
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                    开发
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鱍鱍
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E7%BC%96%E7%A0%81/">
+                        <span class="chip bg-color">编码</span>
                     </a>
                     
                 </div>
@@ -962,24 +733,24 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/77f46f76/">
+                <a href="/posts/4dcfcf81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello! Java 9">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="位运算|常用场景">
                         
-                        <span class="card-title">Hello! Java 9</span>
+                        <span class="card-title">位运算|常用场景</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            　　java9正式发布已经有一段时间了，作为一个思想激进__开放__，勇于探索的喵，本着拥抱新特性的心态。第一时间对java的文档进行了拜读，结合这段时间零零散散__持续__的测试和理解，记录下来以后可能会用到的几个特性。
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-02-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-06
                             </span>
                         <span class="publish-author">
                             
