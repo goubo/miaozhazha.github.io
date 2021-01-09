@@ -3,32 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <title>图片添加水印</title>
-
 </head>
 <body>
 <H1>添加水印小工具</H1>
-<a href="https://blog.goujinbo.com">数猫<a><br>
+<a href="https://blog.goujinbo.com">数猫</a><br>
 
-    <!--<input type="radio" name="Watermark_type" id="Watermark_type_text"/><label for="Watermark_type_text">文字水印</label>-->
-    <!--<input type="radio" name="Watermark_type" id="Watermark_type_image"/><label for="Watermark_type_image">图片水印</label>-->
-    <div>
-        <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="file_select"><br>
-        水印:<input type="text" value="@小鱼水印" id="inp_text"><br>
-        铺满:<input type="radio" name="tiled_type" id="tiled_type_true"/><label for="tiled_type_true">铺满</label>
-        <input type="radio" name="tiled_type" id="tiled_type_false" checked/> <label for="tiled_type_false">单个</label>
-        <br>
-        字号:<input type="number" id="font_size" min="12" max="100" value="42"><br>
-        旋转:<input type="number" id="spin_num" min="-360" max="360" value="0" step="5"><br>
-        颜色:<input type="color" id="inp_color" value="#F9399F"/><br>
-        透明度:<input type="number" id="inp_globalAlpha" value="50" min="0" max="100" step="10"/><br>
-        密度:<input type="number" id="inp_density" value="20" min="-10" max="100" step="3"/><br>
-        <button id="save_button" onclick="saveImage()">保存</button>
-    </div>
+<!--<input type="radio" name="Watermark_type" id="Watermark_type_text"/><label for="Watermark_type_text">文字水印</label>-->
+<!--<input type="radio" name="Watermark_type" id="Watermark_type_image"/><label for="Watermark_type_image">图片水印</label>-->
+<div>
+    <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="file_select"><br>
+    水印:<input type="text" value="@小鱼水印" id="inp_text"/><br>
+    铺满:<input type="radio" name="tiled_type" id="tiled_type_true"/><label for="tiled_type_true">铺满</label>
+    <input type="radio" name="tiled_type" id="tiled_type_false" checked/> <label for="tiled_type_false">单个</label>
     <br>
-    <span id="xy_span"></span>
-    <br>
-    <canvas id="canvas" style="border-style:solid;"></canvas>
+    字号:<input type="number" id="font_size" min="12" max="100" value="42"/><br>
+    旋转:<input type="number" id="spin_num" min="-360" max="360" value="0" step="5"/><br>
+    颜色:<input type="color" id="inp_color" value="#F9399F"/><br>
+    透明度:<input type="number" id="inp_globalAlpha" value="50" min="0" max="100" step="10"/><br>
+    密度:<input type="number" id="inp_density" value="20" min="-10" max="100" step="3"/><br>
+    <button id="save_button" onclick="saveImage()">保存</button>
+</div>
+<br>
+<span id="xy_span"></span><br>
+<canvas id="canvas" style="border-style:solid;"></canvas>
 </body>
-<script src="canvas_image.js"></script>
+<script type="text/javascript">
+    const image_input = document.getElementById("file_select"), cvs = document.getElementById('canvas'),
+        ctx = cvs.getContext('2d')
+    let image_object, image_name, txt_size = 0, onmous_x = 0, onmous_y = 0, pyl_x = 0, pyl_y = 0
+    image_input.addEventListener("change", function () {
+        const file = this.files[0]
+        if (!/image\/\w+/.test(file.type)) {
+            alert("请确保文件为图像类型")
+            return false
+        }
+        image_name = file.name.substring(0, file.name.lastIndexOf("."))
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = function (e) {
+            image_object = new Image()
+            image_object.src = this.result
+            image_object.onload = function () {
+                drawWatermark()
+            }
+        }
+    })
 
+    function drawToCanvas() {
+        cvs.width = image_object.width
+        cvs.height = image_object.height
+        ctx.drawImage(image_object, 0, 0)
+    }
+
+    function drawWatermark() {
+        let tiled = document.getElementById("tiled_type_true").checked
+        let txt = document.getElementById("inp_text").value
+        let font_size = document.getElementById("font_size").value * 1
+        let density = document.getElementById("inp_density").value * 1
+        txt_size = txt.length
+        ctx.clearRect(0, 0, cvs.width, cvs.height)
+        if (onmous_x === 0 && onmous_y === 0) {
+            pyl_x = font_size * txt_size / 2
+            pyl_y = font_size / 2
+        } else {
+            pyl_x = onmous_x - cvs.offsetLeft
+            pyl_y = onmous_y - cvs.offsetTop
+        }
+        if (image_object) drawToCanvas()
+        if (!tiled) {
+            ctx.translate(pyl_x, pyl_y)
+            ctx.rotate(document.getElementById("spin_num").value * Math.PI / 180)
+            ctx.font = font_size + "px serif"
+            ctx.fillStyle = document.getElementById("inp_color").value
+            ctx.globalAlpha = document.getElementById("inp_globalAlpha").value / 100
+            ctx.fillText(txt, -(font_size * txt_size / 2), (font_size / 2))
+            ctx.rotate(-document.getElementById("spin_num").value * Math.PI / 180)
+            ctx.translate(-pyl_x, -pyl_y)
+        } else {
+            let lie = Math.ceil(cvs.width / (density * 3 + (font_size * txt_size))) * 4
+            let hang = Math.ceil(cvs.height / (density * 3 + font_size)) * 4
+            for (let i = -hang; i < hang; i++) {
+                ctx.translate(pyl_x, pyl_y)
+                ctx.rotate(document.getElementById("spin_num").value * Math.PI / 180)
+                ctx.font = font_size + "px serif"
+                ctx.fillStyle = document.getElementById("inp_color").value
+                ctx.globalAlpha = document.getElementById("inp_globalAlpha").value / 100
+                for (let j = -lie; j < lie; j++) {
+                    ctx.fillText(txt, (font_size * txt_size + density * 3) * j, (font_size + density * 3) * i)
+                }
+                ctx.rotate(-document.getElementById("spin_num").value * Math.PI / 180)
+                ctx.translate(-pyl_x, -pyl_y)
+            }
+        }
+    }
+
+    cvs.onmousedown = function (e) {
+        onmous_x = e.pageX
+        onmous_y = e.pageY
+        drawWatermark()
+    }
+    document.getElementById("font_size").onchange = function (e) {
+        drawWatermark()
+    }
+    document.getElementById("inp_text").onchange = function (e) {
+        drawWatermark()
+    }
+    document.getElementById("spin_num").onchange = function (e) {
+        drawWatermark()
+    }
+    document.getElementById("inp_color").onchange = function (e) {
+        drawWatermark()
+    }
+    document.getElementById("inp_globalAlpha").onchange = function (e) {
+        drawWatermark()
+    }
+    document.getElementById("inp_density").onchange = function (e) {
+        drawWatermark()
+    }
+    document.getElementById("tiled_type_true").onchange = function (e) {
+        drawWatermark()
+    }
+    document.getElementById("tiled_type_false").onchange = function (e) {
+        drawWatermark()
+    }
+
+    function saveImage() {
+        var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
+        save_link.href = cvs.toDataURL("image/jpeg")
+        save_link.download = image_name || "小鱼水印"
+        var event = document.createEvent('MouseEvents')
+        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+        save_link.dispatchEvent(event)
+    }
+
+    function compress(base64, quality, mimeType) {
+        let canvas = document.createElement('canvas')
+        let img = document.createElement('img')
+        img.crossOrigin = 'anonymous'
+        img.src = base64
+        img.onload = () => {
+            let targetWidth = img.width * quality / 100, targetHeight = img.height * quality / 100
+            canvas.width = targetWidth
+            canvas.height = targetHeight
+            let ctx = canvas.getContext('2d')
+            ctx.clearRect(0, 0, targetWidth, targetHeight)
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+            let imageData = canvas.toDataURL(mimeType, quality / 100)
+            var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
+            save_link.href = imageData
+            save_link.download = "sdlfsdf"
+            var event = document.createEvent('MouseEvents')
+            event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+            save_link.dispatchEvent(event)
+        }
+    }
+
+    drawWatermark()
+</script>
 </html>
