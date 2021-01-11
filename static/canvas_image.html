@@ -130,32 +130,10 @@
     function saveImage() {
         var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
         save_link.href = cvs.toDataURL("image/jpeg")
-        save_link.download = image_name || "小鱼水印"
+        save_link.download = image_name+".jpg" || "小鱼水印.jpg"
         var event = document.createEvent('MouseEvents')
         event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
         save_link.dispatchEvent(event)
-    }
-
-    function compress(base64, quality, mimeType) {
-        let canvas = document.createElement('canvas')
-        let img = document.createElement('img')
-        img.crossOrigin = 'anonymous'
-        img.src = base64
-        img.onload = () => {
-            let targetWidth = img.width * quality / 100, targetHeight = img.height * quality / 100
-            canvas.width = targetWidth
-            canvas.height = targetHeight
-            let ctx = canvas.getContext('2d')
-            ctx.clearRect(0, 0, targetWidth, targetHeight)
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-            let imageData = canvas.toDataURL(mimeType, quality / 100)
-            var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
-            save_link.href = imageData
-            save_link.download = "sdlfsdf"
-            var event = document.createEvent('MouseEvents')
-            event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
-            save_link.dispatchEvent(event)
-        }
     }
 
     drawWatermark()
