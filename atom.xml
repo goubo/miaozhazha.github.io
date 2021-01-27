@@ -6,7 +6,7 @@
   <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
   
   <link href="https://blog.goujinbo.com/"/>
-  <updated>2021-01-09T05:49:18.743Z</updated>
+  <updated>2021-01-27T07:48:38.789Z</updated>
   <id>https://blog.goujinbo.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>golang 使用 viper 读写配置文件</title>
+    <link href="https://blog.goujinbo.com/posts/73854ea2/"/>
+    <id>https://blog.goujinbo.com/posts/73854ea2/</id>
+    <published>2021-01-26T06:42:02.000Z</published>
+    <updated>2021-01-27T07:48:38.789Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;viper&quot;&gt;&lt;a href=&quot;#viper&quot; class=&quot;headerlink&quot; title=&quot;viper&quot;&gt;&lt;/a&gt;viper&lt;/h2&gt;&lt;p&gt; 主要是用于处理各种格式的配置文件，简化程序配置的读取问题支持</summary>
+        
+      
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="golang" scheme="https://blog.goujinbo.com/tags/golang/"/>
+    
+  </entry>
   
   <entry>
     <title>linux修改文本编码格式 ascii 转 utf-8</title>
