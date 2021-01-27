@@ -331,7 +331,7 @@
     <link href="https://blog.goujinbo.com/posts/246cc011/"/>
     <id>https://blog.goujinbo.com/posts/246cc011/</id>
     <published>2018-01-23T06:31:49.000Z</published>
-    <updated>2021-01-06T06:59:23.298Z</updated>
+    <updated>2021-01-26T06:42:22.666Z</updated>
     
     
     <summary type="html">&lt;p&gt;两年前在公司开始负责一个底层api的项目。包含功能很简单，对接底层系统进行封装，提供一些功能实现的封装，对外提供http restful接口。主要要求是支持高并发和高稳定性。最开始的选型是用一些轻量级的http server框架。然后集成spring、mybatis等传统框架实现，后来了解了一个叫做Vert.x的nio框架。进行尝试并且经过了漫长的适应期之后。本喵只有一句话。Vert.x即是正义！&lt;/p&gt;</summary>
