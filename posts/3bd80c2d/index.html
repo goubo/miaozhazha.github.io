@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="java 快速排序实现与详解, 数猫">
+    <meta name="keywords" content="maven 重复依赖\冲突打包配置, 数猫">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>java 快速排序实现与详解 | 数猫</title>
+    <title>maven 重复依赖\冲突打包配置 | 数猫</title>
     <link rel="icon" type="image/png" href="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/log.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -228,12 +228,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">java 快速排序实现与详解</h1>
+                    <h1 class="description center-align post-title">maven 重复依赖\冲突打包配置</h1>
                 </div>
             </div>
         </div>
@@ -353,8 +353,12 @@
                                 <span class="chip bg-color">java</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">开发工具</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                                <span class="chip bg-color">环境</span>
                             </a>
                         
                     </div>
@@ -378,28 +382,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-03-08
+                    2021-02-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-09-04
+                    2021-02-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    877
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -422,46 +426,137 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>快速排序是一种简单的，常用(被问到)的排序算法。这里讲述一下快速排序的逻辑原理和Java的实现代码。<br>快速排序的思想核心，我认为就是4个字：化繁为简。  </p>
-<blockquote>
-<p>快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要$O(n \log n )$（大O符号）次比较。在最坏状况下则需要$O(n^2)$次比较，但这种状况并不常见。事实上，快速排序通常明显比其他$O(n \log n )$演算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。<br>以上文字摘自<a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">wikiwand-快速排序</a></p>
-</blockquote>
-<a id="more"></a>
+                <p>使用vert.x官方提供的打包配置</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.build.sourceEncoding</span><span class="token punctuation">&gt;</span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.build.sourceEncoding</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven-compiler-plugin.version</span><span class="token punctuation">&gt;</span></span>3.8.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven-compiler-plugin.version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven-shade-plugin.version</span><span class="token punctuation">&gt;</span></span>3.2.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven-shade-plugin.version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven-surefire-plugin.version</span><span class="token punctuation">&gt;</span></span>2.22.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven-surefire-plugin.version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exec-maven-plugin.version</span><span class="token punctuation">&gt;</span></span>3.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exec-maven-plugin.version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vertx.version</span><span class="token punctuation">&gt;</span></span>4.0.2-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>vertx.version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>junit-jupiter.version</span><span class="token punctuation">&gt;</span></span>5.7.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>junit-jupiter.version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main.verticle</span><span class="token punctuation">&gt;</span></span>com.example.starter.MainVerticle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main.verticle</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>launcher.class</span><span class="token punctuation">&gt;</span></span>io.vertx.core.Launcher<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>launcher.class</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>
 
-<p>快速排序的原理</p>
-<ol>
-<li>在一个数组中选择一个基准。将所有的元素与这个基准比较，分成大于基准条件，小于基准条件，以及如果有重复的话，还有一个等于基准条件的三个列表。  </li>
-<li>将大于、小于基准的两个列表重复这个操作。直到拆解的数组剩余0或1个元素。  </li>
-<li>将所有拆分的数组，按照顺序进行合并。</li>
-</ol>
-<p>2、3步骤听起来很麻烦，其实如果使用递归的方式来实现这个问题，将会非常简单明了。<br>首先，我们先理解快速排序的方法和原理。<br>假设，我们有一个数组，数组内容为{4,5,3,2,1,6,3}7个元素,并且有一个重复的值。<br>我们找一个基准条件，方便起见，我在这里使用第一个元素作为基准值。<br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/1.png"></fancybox><br>依次将每个元素与第一个元素比较，比他小的放到第一个集合，与他相同的放到第二个集合，大于他的放到第三个集合。<br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/2.png"></fancybox><br>这时，将第1、3个集合继续拆分。进行无限重复，直到每个集合都只剩下0个或1个元素。<br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/3.png"></fancybox></p>
-<p>然后开始合并数据返回。<br>当集合元素小于2时，就不进行拆分了直接向上返回。返回的时候，将三个数组合并起来。<br>首先，是最底下第四层的数组，1，2都只有一个元素，合并后返回上层（1，2）。第三层左边，三个数组中，比基准小的数组就完成了排序。<br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/4.png"></fancybox><br>然后，第三层左侧的三个数组继续合并，向上返回（1，2，3，3），然后同样合并右侧三个数组，返回（5，6）。<br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/5.png"></fancybox><br>第二层的左右两个数组都完成了排序，然后三个数组合并返回（1，2，3，3，4，5，6）。完成对整个数组的排序。<br><fancybox><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/6.png"></fancybox></p>
-<p><code>字丑请见谅😝😝😝😝</code><br>将数组无限分割，直到每个数组都只有1个或0个元素，再将其合并，就完成了数组排序。下面是Java对上图的实现代码。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> <span class="token function">sequence</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> list<span class="token punctuation">;</span>
-    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> alist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> blist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> clist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> dlist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">Integer</span> i <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>integer <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>integer <span class="token operator">&lt;</span> i<span class="token punctuation">)</span> alist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>integer <span class="token operator">&gt;</span> i<span class="token punctuation">)</span> blist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> clist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    dlist<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token function">sequence</span><span class="token punctuation">(</span>alist<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    dlist<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>clist<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    dlist<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token function">sequence</span><span class="token punctuation">(</span>blist<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> dlist<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
 
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">sequence</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>上述代码只是帮助理解快速排序，绝对不能用到实际项目中。如果因为这段代码被群殴，本人概不负责23333</p>
-<p>快速排序的执行速度介于$O(n \log n )$ 至 $O(n^2)$之间。原理也很简单，当每一次取到的基准值都是完美的中间值，左右两个数组会等分原来的数组，数组拆分的深度就会降低（$\log n$次）。当每一次取到的基准值都是集合的最大或最小值是，左右两个集合总有一个是空的。这个拆分的深度就等于数组的长度（$n$次）。</p>
-<p>本文描述的场景包括数据中可能出现重复数据的情况。查了一部分资料，理论描述中不包括重复的数组的情况。这里可能描述的有一些出入，不过思想是一致的。年轻人，研究算法不要太拘泥于形式嘛，*的思想才是重要的嘛。</p>
-<p>化繁为简。简单的四个字并不容易做到，无论生活还是工作，这四个字都能给我们很大的帮助。学会复杂问题简单化，是每个做技术的人有应该有的基本能力。</p>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-compiler-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${maven-compiler-plugin.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>release</span><span class="token punctuation">&gt;</span></span>11<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>release</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-shade-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${maven-shade-plugin.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>phase</span><span class="token punctuation">&gt;</span></span>package<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>phase</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">&gt;</span></span>shade<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transformers</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transformer</span>
+                  <span class="token attr-name">implementation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.apache.maven.plugins.shade.resource.ManifestResourceTransformer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>manifestEntries</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Main-Class</span><span class="token punctuation">&gt;</span></span>${launcher.class}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Main-Class</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Main-Verticle</span><span class="token punctuation">&gt;</span></span>${main.verticle}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Main-Verticle</span><span class="token punctuation">&gt;</span></span>
+                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>manifestEntries</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transformer</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transformer</span> <span class="token attr-name">implementation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.apache.maven.plugins.shade.resource.ServicesResourceTransformer<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transformers</span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactSet</span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactSet</span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>outputFile</span><span class="token punctuation">&gt;</span></span>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>outputFile</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-surefire-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${maven-surefire-plugin.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.codehaus.mojo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>exec-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${exec-maven-plugin.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mainClass</span><span class="token punctuation">&gt;</span></span>io.vertx.core.Launcher<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mainClass</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arguments</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span><span class="token punctuation">&gt;</span></span>run<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>argument</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span><span class="token punctuation">&gt;</span></span>${main.verticle}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>argument</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>arguments</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span>
 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repositories</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repository</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>sonatype-oss-snapshots<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>Sonatype OSSRH Snapshots<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>https://oss.sonatype.org/content/repositories/snapshots<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>layout</span><span class="token punctuation">&gt;</span></span>default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>layout</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>releases</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>never<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>releases</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>snapshots</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>never<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>snapshots</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">&gt;</span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最近项目整合hadoop环境依赖,由于对hadoop组件不太熟悉,部分依赖互相覆盖,启动报错</p>
+<pre class="line-numbers language-log" data-language="log"><code class="language-log">Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
+	at sun.security.util.SignatureFileVerifier.processImpl(SignatureFileVerifier.java:330)
+	at sun.security.util.SignatureFileVerifier.process(SignatureFileVerifier.java:263)
+	at java.util.jar.JarVerifier.processEntry(JarVerifier.java:318)
+	at java.util.jar.JarVerifier.update(JarVerifier.java:230)
+	at java.util.jar.JarFile.initializeVerifier(JarFile.java:383)
+	at java.util.jar.JarFile.ensureInitialization(JarFile.java:617)
+	at java.util.jar.JavaUtilJarAccessImpl.ensureInitialization(JavaUtilJarAccessImpl.java:69)
+	at sun.misc.URLClassPath$JarLoader$2.getManifest(URLClassPath.java:991)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:451)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>因为包的重复引用会导致生成多个MF文件,添加<code>maven-shade-plugin</code>插件的过滤配置删除多余的MF文件.</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-shade-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${maven-shade-plugin.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>.....其他配置....</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filters</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifact</span><span class="token punctuation">&gt;</span></span>*:*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifact</span><span class="token punctuation">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>excludes</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclude</span><span class="token punctuation">&gt;</span></span>META-INF/*.SF<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclude</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclude</span><span class="token punctuation">&gt;</span></span>META-INF/*.DSA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclude</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclude</span><span class="token punctuation">&gt;</span></span>META-INF/*.RSA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclude</span><span class="token punctuation">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>excludes</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filters</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>...其他配置...</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -487,7 +582,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.goujinbo.com/posts/ebe42ec/">https://blog.goujinbo.com/posts/ebe42ec/</a>
+                    <a href="https://blog.goujinbo.com/posts/3bd80c2d/">https://blog.goujinbo.com/posts/3bd80c2d/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -529,8 +624,12 @@
                                     <span class="chip bg-color">java</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">开发工具</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                                    <span class="chip bg-color">环境</span>
                                 </a>
                             
                         </div>
@@ -702,17 +801,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/e36969ff/">
+                <a href="/posts/3bd80c2d/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="sublime text 3 license">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="maven 重复依赖\冲突打包配置">
                         
-                        <span class="card-title">sublime text 3 license</span>
+                        <span class="card-title">maven 重复依赖\冲突打包配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -722,26 +822,35 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2018-05-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                    常用软件
+                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%BF%80%E6%B4%BB%E7%A0%81/">
-                        <span class="chip bg-color">激活码</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">开发工具</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                        <span class="chip bg-color">环境</span>
                     </a>
                     
                 </div>
@@ -755,25 +864,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/5d70e24d/">
+                <a href="/posts/73854ea2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JShell">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="golang 使用 viper 读写配置文件">
                         
-                        <span class="card-title">JShell</span>
+                        <span class="card-title">golang 使用 viper 读写配置文件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-26
                             </span>
                         <span class="publish-author">
                             
@@ -790,8 +898,8 @@ jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
                     </a>
                     
                 </div>
@@ -922,13 +1030,6 @@ jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS�
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 

@@ -6,7 +6,7 @@
   <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
   
   <link href="https://blog.goujinbo.com/"/>
-  <updated>2021-01-27T07:48:38.789Z</updated>
+  <updated>2021-02-05T05:36:27.124Z</updated>
   <id>https://blog.goujinbo.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>maven 重复依赖\冲突打包配置</title>
+    <link href="https://blog.goujinbo.com/posts/3bd80c2d/"/>
+    <id>https://blog.goujinbo.com/posts/3bd80c2d/</id>
+    <published>2021-02-05T05:27:15.000Z</published>
+    <updated>2021-02-05T05:36:27.124Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;使用vert.x官方提供的打包配置&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-xml&quot; data-language=&quot;xml&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;  &lt;span class=&quot;token</summary>
+        
+      
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="开发工具" scheme="https://blog.goujinbo.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="环境" scheme="https://blog.goujinbo.com/tags/%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
   
   <entry>
     <title>golang 使用 viper 读写配置文件</title>
