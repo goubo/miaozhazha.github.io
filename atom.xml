@@ -6,7 +6,7 @@
   <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
   
   <link href="https://blog.goujinbo.com/"/>
-  <updated>2021-02-05T05:36:27.124Z</updated>
+  <updated>2021-02-08T01:16:45.814Z</updated>
   <id>https://blog.goujinbo.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>从 vert.x web 理解 http chunk 传输</title>
+    <link href="https://blog.goujinbo.com/posts/91532440/"/>
+    <id>https://blog.goujinbo.com/posts/91532440/</id>
+    <published>2021-02-06T06:03:43.000Z</published>
+    <updated>2021-02-08T01:16:45.814Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近有个场景是后台查询大量数据返回前端,根据数据规律决定使用chunk方式流返回.&lt;/p&gt;
+&lt;p&gt;服务端使用&lt;code&gt;vert.x web&lt;/code&gt;,客户端使用&lt;a href=&quot;https://www.hutool.cn/&quot;&gt;hutool&lt;/a&gt;工具提供的&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="开发" scheme="https://blog.goujinbo.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="java" scheme="https://blog.goujinbo.com/tags/java/"/>
+    
+    <category term="Vert.x" scheme="https://blog.goujinbo.com/tags/Vert-x/"/>
+    
+  </entry>
+  
+  <entry>
     <title>maven 重复依赖\冲突打包配置</title>
     <link href="https://blog.goujinbo.com/posts/3bd80c2d/"/>
     <id>https://blog.goujinbo.com/posts/3bd80c2d/</id>
     <published>2021-02-05T05:27:15.000Z</published>
-    <updated>2021-02-05T05:36:27.124Z</updated>
+    <updated>2021-02-05T05:36:41.627Z</updated>
     
     
       
@@ -51,7 +79,7 @@
     <link href="https://blog.goujinbo.com/posts/73854ea2/"/>
     <id>https://blog.goujinbo.com/posts/73854ea2/</id>
     <published>2021-01-26T06:42:02.000Z</published>
-    <updated>2021-01-27T07:48:38.789Z</updated>
+    <updated>2021-01-28T05:07:12.697Z</updated>
     
     
       
