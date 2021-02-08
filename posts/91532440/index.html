@@ -535,7 +535,7 @@ response<span class="token punctuation">.</span><span class="token function">exc
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>对基于http协议的理解加对<code>response.exceptionHandler</code>的源码进行简单分析,很很容易就能发现原理是根据http1.1新增的连接复用特性.对tcp连接状态进行监控,实际抛出的异常也是连接关闭的异常<code>Connection was closed</code>.</p>
+<p>对基于http协议的理解加对<code>response.exceptionHandler</code>的源码进行简单分析,很很容易就能发现原理是对tcp连接状态进行监控,实际抛出的异常也是连接关闭的异常<code>Connection was closed</code>.</p>
 
                 
             </div>
