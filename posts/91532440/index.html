@@ -392,14 +392,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -473,6 +473,9 @@
 <p>客户端通过异步请求服务端接口,获取流<code>InputStream</code>,<br>按行读取缓冲,输出内容.</p>
 <h2 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h2><p>http协议连接是一种无状态连接,http的数据包分成请求头和请求体,响应包分别是响应头和响应体.<br>客户端在读取响应内容时,根据响应头时,根据<code>content-length</code>参数确认响应体的长度,读取到对应长度的内容,客户端就可以认为本次请求已经完成,已获取到所有内容.否则就一直等待服务端写出数据,直到缓冲超时.</p>
 <h3 id="chunk传输"><a href="#chunk传输" class="headerlink" title="chunk传输"></a>chunk传输</h3><p>http请求响应时,服务端在返回请求头信息时,无法得知需要返回的数据的真实长度.一般发生在动态信息更新(sse推送),异步接口请求等情形.这时就无法使用<code>content-length</code>来通知client端.可以使用<code>transfer-encoding: chunked</code>响应头来告诉客户端这是一个长连接,client就会一直等待接收服务端的响应数据.直到收到两个换行符<code>\r\n</code>组成的结束符,才会认为本次请求已经结束.</p>
+<blockquote>
+<p>当客户端向服务器请求一个静态页面或者一张图片时，服务器可以很清楚的知道内容大小，然后通过Content-length消息首部字段告诉客户端需要接收多少数据。但是如果是动态页面等时，服务器是不可能预先知道内容大小，这时就可以使用Transfer-Encoding：chunk模式来传输数据了。即如果要一边产生数据，一边发给客户端，服务器就需要使用”Transfer-Encoding: chunked”这样的方式来代替Content-Length。<br>chunk编码将数据分成一块一块的发生。Chunked编码将使用若干个Chunk串连而成，由一个标明长度为0的chunk标示结束。每个Chunk分为头部和正文两部分，头部内容指定正文的字符总数（十六进制的数字）和数量单位（一般不写），正文部分就是指定长度的实际内容，两部分之间用回车换行(CRLF)隔开。在最后一个长度为0的Chunk中的内容是称为footer的内容，是一些附加的Header信息（通常可以直接忽略）。</p>
+</blockquote>
 <h2 id="问题-客户端断开"><a href="#问题-客户端断开" class="headerlink" title="问题:客户端断开"></a>问题:客户端断开</h2><p>当服务端还在返回,客户端已经因为自身原因断开连接,服务端还会继续发送剩余数据,因为在一次http请求通讯中,客户端无法主动通知服务器断开连接<br>修改服务端代码,给服务端添加日志观察请求</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">vertx<span class="token punctuation">.</span><span class="token function">setPeriodic</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> id <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
   <span class="token class-name">String</span> s <span class="token operator">=</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1025,7 +1028,7 @@ response<span class="token punctuation">.</span><span class="token function">exc
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.7k</span>&nbsp;字
+                class="white-color">20.9k</span>&nbsp;字
             
             
             
