@@ -6,7 +6,7 @@
   <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
   
   <link href="https://blog.goujinbo.com/"/>
-  <updated>2021-02-08T06:29:08.580Z</updated>
+  <updated>2021-03-03T07:04:36.259Z</updated>
   <id>https://blog.goujinbo.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>从 vert.x web 理解 http chunk 传输</title>
+    <title>scrcpy 帮助文档</title>
+    <link href="https://blog.goujinbo.com/posts/4382c4d/"/>
+    <id>https://blog.goujinbo.com/posts/4382c4d/</id>
+    <published>2021-03-03T07:02:20.000Z</published>
+    <updated>2021-03-03T07:04:36.259Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Usage: scrcpy [options]&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;Options:
+
+   </summary>
+        
+      
+    
+    
+    
+    
+    <category term="软件" scheme="https://blog.goujinbo.com/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 vert.x web 理解 http chunk 传输</title>
     <link href="https://blog.goujinbo.com/posts/91532440/"/>
     <id>https://blog.goujinbo.com/posts/91532440/</id>
     <published>2021-02-06T06:03:43.000Z</published>
-    <updated>2021-02-08T06:29:08.580Z</updated>
+    <updated>2021-03-01T01:22:22.924Z</updated>
     
     
       
@@ -154,7 +180,7 @@
     <link href="https://blog.goujinbo.com/posts/79db5390/"/>
     <id>https://blog.goujinbo.com/posts/79db5390/</id>
     <published>2020-12-22T06:03:19.000Z</published>
-    <updated>2020-12-22T06:29:29.873Z</updated>
+    <updated>2021-03-03T07:03:19.967Z</updated>
     
     
       
