@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux修改文本编码格式 ascii 转 utf-8, 数猫">
+    <meta name="keywords" content="统计代码行数, 数猫">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux修改文本编码格式 ascii 转 utf-8 | 数猫</title>
+    <title>统计代码行数 | 数猫</title>
     <link rel="icon" type="image/png" href="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/log.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -228,12 +228,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux修改文本编码格式 ascii 转 utf-8</h1>
+                    <h1 class="description center-align post-title">统计代码行数</h1>
                 </div>
             </div>
         </div>
@@ -349,12 +349,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">开发工具</span>
                             </a>
                         
-                            <a href="/tags/%E7%BC%96%E7%A0%81/">
-                                <span class="chip bg-color">编码</span>
+                            <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                                <span class="chip bg-color">环境</span>
                             </a>
                         
                     </div>
@@ -369,21 +369,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-09
+                    2021-03-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-09
+                    2021-03-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    143
+                    189
                 </div>
                 
 
@@ -413,28 +413,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ascii-转-utf-8-有-BOM"><a href="#ascii-转-utf-8-有-BOM" class="headerlink" title="ascii 转 utf-8 有 BOM"></a>ascii 转 utf-8 有 BOM</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># ll</span>
-total <span class="token number">8</span>
--rw-------. <span class="token number">1</span> root root <span class="token number">1621</span> Sep <span class="token number">28</span> <span class="token number">19</span>:35 anaconda-ks.cfg
--rw-r--r--  <span class="token number">1</span> root root    <span class="token number">8</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:37 test.txt
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat test.txt</span>
-abcdefg
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file test.txt</span>
-test.txt: ASCII text
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># echo -ne '\xEF\xBB\xBF' &gt; out.txt</span>
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat test.txt &gt;&gt; out.txt</span>
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># ll</span>
-total <span class="token number">12</span>
--rw-------. <span class="token number">1</span> root root <span class="token number">1621</span> Sep <span class="token number">28</span> <span class="token number">19</span>:35 anaconda-ks.cfg
--rw-r--r--  <span class="token number">1</span> root root   <span class="token number">11</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:40 out.txt
--rw-r--r--  <span class="token number">1</span> root root    <span class="token number">8</span> Jan  <span class="token number">9</span> <span class="token number">13</span>:37 test.txt
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file test.txt</span>
-test.txt: ASCII text
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># file out.txt</span>
-out.txt: UTF-8 Unicode <span class="token punctuation">(</span>with BOM<span class="token punctuation">)</span> text
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment"># cat out.txt</span>
-abcdefg
-<span class="token punctuation">[</span>root@applicationServer ~<span class="token punctuation">]</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>使用<code>cloc</code>工具统计代码行数</p>
+<h1 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h1><p>如果你的是<code>macOS</code>,直接<code>brew install cloc</code>,</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
+<li>打开命令行</li>
+<li>cd 到项目根路径</li>
+<li>执行 <code>cloc ./</code></li>
+<li>查看输出结果<br>like <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Java                            <span class="token number">55</span>            <span class="token number">451</span>           <span class="token number">1049</span>           <span class="token number">2951</span>
+XML                             <span class="token number">14</span>             <span class="token number">16</span>             <span class="token number">16</span>            <span class="token number">783</span>
+Maven                            <span class="token number">6</span>             <span class="token number">23</span>              <span class="token number">7</span>            <span class="token number">545</span>
+Markdown                         <span class="token number">3</span>             <span class="token number">54</span>              <span class="token number">0</span>            <span class="token number">426</span>
+JSON                             <span class="token number">4</span>              <span class="token number">0</span>              <span class="token number">0</span>            <span class="token number">205</span>
+Go                               <span class="token number">5</span>             <span class="token number">27</span>             <span class="token number">10</span>            <span class="token number">181</span>
+Python                           <span class="token number">2</span>             <span class="token number">14</span>             <span class="token number">43</span>             <span class="token number">45</span>
+Bourne Shell                     <span class="token number">1</span>             <span class="token number">19</span>             <span class="token number">41</span>             <span class="token number">12</span>
+YAML                             <span class="token number">1</span>              <span class="token number">0</span>              <span class="token number">0</span>              <span class="token number">6</span>
+-------------------------------------------------------------------------------
+SUM:                            <span class="token number">91</span>            <span class="token number">604</span>           <span class="token number">1166</span>           <span class="token number">5154</span>
+-------------------------------------------------------------------------------<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<code>cloc</code> 同样可以统计tar包内的代码行,就像这样<code>cloc src.tar.gz</code><br>或者只统计某些文件 <code>cloc *.java *.py</code></li>
+</ol>
+<h1 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h1><p><code>--exclude-dir</code> 过滤目录,一般通过配置如下<code>--exclude-dir=.idea,.git,node_modules,dist,target,test,doc</code></p>
+<p><code>--report-file fileName</code> 输出到指定文件</p>
+<p><code>--by-file</code> 统计每个文件的代码数</p>
+
                 
             </div>
             <hr/>
@@ -460,7 +465,7 @@ abcdefg
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.goujinbo.com/posts/5e1a3753/">https://blog.goujinbo.com/posts/5e1a3753/</a>
+                    <a href="https://blog.goujinbo.com/posts/90a5fa3e/">https://blog.goujinbo.com/posts/90a5fa3e/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -498,12 +503,12 @@ abcdefg
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">开发工具</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BC%96%E7%A0%81/">
-                                    <span class="chip bg-color">编码</span>
+                                <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                                    <span class="chip bg-color">环境</span>
                                 </a>
                             
                         </div>
@@ -675,17 +680,18 @@ abcdefg
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/73854ea2/">
+                <a href="/posts/90a5fa3e/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="golang 使用 viper 读写配置文件">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="统计代码行数">
                         
-                        <span class="card-title">golang 使用 viper 读写配置文件</span>
+                        <span class="card-title">统计代码行数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -695,26 +701,27 @@ abcdefg
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                    开发
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鱍鱍
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/golang/">
-                        <span class="chip bg-color">golang</span>
+                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">开发工具</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%8E%AF%E5%A2%83/">
+                        <span class="chip bg-color">环境</span>
                     </a>
                     
                 </div>
@@ -728,13 +735,13 @@ abcdefg
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/4dcfcf81/">
+                <a href="/posts/4382c4d/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="位运算|常用场景">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="scrcpy 帮助文档">
                         
-                        <span class="card-title">位运算|常用场景</span>
+                        <span class="card-title">scrcpy 帮助文档</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -745,16 +752,12 @@ abcdefg
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-03
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                    开发
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鱍鱍
                             
                         </span>
                     </div>
@@ -762,8 +765,8 @@ abcdefg
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6/">
+                        <span class="chip bg-color">软件</span>
                     </a>
                     
                 </div>

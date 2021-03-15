@@ -6,7 +6,7 @@
   <link href="https://blog.goujinbo.com/atom.xml" rel="self"/>
   
   <link href="https://blog.goujinbo.com/"/>
-  <updated>2021-03-03T07:04:36.259Z</updated>
+  <updated>2021-03-15T08:54:14.532Z</updated>
   <id>https://blog.goujinbo.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>统计代码行数</title>
+    <link href="https://blog.goujinbo.com/posts/90a5fa3e/"/>
+    <id>https://blog.goujinbo.com/posts/90a5fa3e/</id>
+    <published>2021-03-15T08:47:18.000Z</published>
+    <updated>2021-03-15T08:54:14.532Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;使用&lt;code&gt;cloc&lt;/code&gt;工具统计代码行数&lt;/p&gt;
+&lt;h1 id=&quot;安装工具&quot;&gt;&lt;a href=&quot;#安装工具&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="开发工具" scheme="https://blog.goujinbo.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="环境" scheme="https://blog.goujinbo.com/tags/%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
   
   <entry>
     <title>scrcpy 帮助文档</title>
