@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>图片添加水印</title>
 </head>
-<body>
-<H1>添加水印小工具</H1>
-<a href="https://blog.goujinbo.com">数猫</a><br>
 
-<!--<input type="radio" name="Watermark_type" id="Watermark_type_text"/><label for="Watermark_type_text">文字水印</label>-->
-<!--<input type="radio" name="Watermark_type" id="Watermark_type_image"/><label for="Watermark_type_image">图片水印</label>-->
-<div>
-    <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="file_select"><br>
-    水印:<input type="text" value="@小鱼水印" id="inp_text"/><br>
-    铺满:<input type="radio" name="tiled_type" id="tiled_type_true"/><label for="tiled_type_true">铺满</label>
-    <input type="radio" name="tiled_type" id="tiled_type_false" checked/> <label for="tiled_type_false">单个</label>
+<body>
+    <H1>添加水印小工具</H1>
+    <a href="https://blog.goujinbo.com">数猫</a><br>
+
+    <!--<input type="radio" name="Watermark_type" id="Watermark_type_text"/><label for="Watermark_type_text">文字水印</label>-->
+    <!--<input type="radio" name="Watermark_type" id="Watermark_type_image"/><label for="Watermark_type_image">图片水印</label>-->
+    <div>
+        <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="file_select"><br>
+        水印:<input type="text" value="@小鱼水印" id="inp_text" /><br>
+        铺满:<input type="radio" name="tiled_type" id="tiled_type_true" /><label for="tiled_type_true">铺满</label>
+        <input type="radio" name="tiled_type" id="tiled_type_false" checked /> <label for="tiled_type_false">单个</label>
+        <br>
+        字号:<input type="number" id="font_size" min="12" max="100" value="42" /><br>
+        旋转:<input type="number" id="spin_num" min="-360" max="360" value="0" step="5" /><br>
+        颜色:<input type="color" id="inp_color" value="#F9399F" /><br>
+        透明度:<input type="number" id="inp_globalAlpha" value="50" min="0" max="100" step="10" /><br>
+        密度:<input type="number" id="inp_density" value="20" min="-10" max="100" step="3" /><br>
+        <button id="save_button" onclick="saveImage()">保存</button>
+    </div>
     <br>
-    字号:<input type="number" id="font_size" min="12" max="100" value="42"/><br>
-    旋转:<input type="number" id="spin_num" min="-360" max="360" value="0" step="5"/><br>
-    颜色:<input type="color" id="inp_color" value="#F9399F"/><br>
-    透明度:<input type="number" id="inp_globalAlpha" value="50" min="0" max="100" step="10"/><br>
-    密度:<input type="number" id="inp_density" value="20" min="-10" max="100" step="3"/><br>
-    <button id="save_button" onclick="saveImage()">保存</button>
-</div>
-<br>
-<span id="xy_span"></span><br>
-<canvas id="canvas" style="border-style:solid;"></canvas>
+    <span id="xy_span"></span><br>
+    <canvas id="canvas" style="border-style:solid;"></canvas>
 </body>
 <script type="text/javascript">
     const image_input = document.getElementById("file_select"), cvs = document.getElementById('canvas'),
@@ -73,7 +75,7 @@
         if (!tiled) {
             ctx.translate(pyl_x, pyl_y)
             ctx.rotate(document.getElementById("spin_num").value * Math.PI / 180)
-            ctx.font = font_size + "px serif"
+            ctx.font = font_size + "px bold serif"
             ctx.fillStyle = document.getElementById("inp_color").value
             ctx.globalAlpha = document.getElementById("inp_globalAlpha").value / 100
             ctx.fillText(txt, -(font_size * txt_size / 2), (font_size / 2))
@@ -85,7 +87,7 @@
             for (let i = -hang; i < hang; i++) {
                 ctx.translate(pyl_x, pyl_y)
                 ctx.rotate(document.getElementById("spin_num").value * Math.PI / 180)
-                ctx.font = font_size + "px serif"
+                ctx.font = font_size + "px bold serif"
                 ctx.fillStyle = document.getElementById("inp_color").value
                 ctx.globalAlpha = document.getElementById("inp_globalAlpha").value / 100
                 for (let j = -lie; j < lie; j++) {
@@ -130,7 +132,7 @@
     function saveImage() {
         var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
         save_link.href = cvs.toDataURL("image/jpeg")
-        save_link.download = image_name+".jpg" || "小鱼水印.jpg"
+        save_link.download = image_name + ".jpg" || "小鱼水印.jpg"
         var event = document.createEvent('MouseEvents')
         event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
         save_link.dispatchEvent(event)
@@ -138,4 +140,5 @@
 
     drawWatermark()
 </script>
+
 </html>

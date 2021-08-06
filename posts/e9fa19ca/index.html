@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -433,13 +433,14 @@
                 <p><a target="_blank" rel="noopener" href="http://vertx.io/">Vert.x 3.8.0</a>已经发布（写这篇文章的时候）,本次改动说大不大，说小也不小，删了之前介绍Vert.x 3.5的文章，重新使用3.8版本开发一个单点后台程序，为Vert.x发展信徒（误）  </p>
 <p>开发环境：idea+maven+mysql+java8<br>计划开发一个图书馆信息管理系统。只做最简单的api后台功能，目的是梳理Vert.x开发思路。能力一般水平有限，从代码出发，尽量说清楚相关的内容。<br>前端实在太复杂了，不感动不感动</p>
 <p>本篇文章为第一章，创建项目,介绍一下基础知识，并创建http server监听web端口。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h2><p>创建maven工程，pom文件添加Vert.x依赖</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>io.vertx<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>vertx-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.8.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后创建对应的类<br><code>com.bobo.library.MainVerticle</code>继承<code>AbstractVerticle</code>抽象类,再重写<code>start()</code>函数</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>bobo<span class="token punctuation">.</span>library</span><span class="token punctuation">;</span>
 
@@ -488,6 +489,7 @@
 <span class="token keyword">default</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Promise</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Void</span><span class="token punctuation">&gt;</span></span> startPromise<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
   <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">Future</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Void</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span> startPromise<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="部署Verticle"><a href="#部署Verticle" class="headerlink" title="部署Verticle"></a>部署Verticle</h2><p>写一个main方法测试部署一下</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>bobo<span class="token punctuation">.</span>library<span class="token punctuation">.</span></span><span class="token class-name">MainVerticle</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">io<span class="token punctuation">.</span>vertx<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">Vertx</span><span class="token punctuation">;</span>
@@ -542,6 +544,7 @@
 </ul>
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">$ curl http://127.0.0.1:8081 
 Hello World!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>至此一个简单的HttpServer监听就创建完成了。</p>
 <h2 id="路由-Router"><a href="#路由-Router" class="headerlink" title="路由 Router"></a>路由 Router</h2><p>上面示例的httpserver监听的是一个端口，所有到这个端口的请求都由<code>requestHandler</code>函数指定的<code>Handler</code>执行。一般我们正常的系统都有多个api接口。如果请求都发到同一个<code>Handler</code>再手动分发就太麻烦了。<br><code>Vert.x-web</code>中提供<code>Router</code>接口，使用<code>Router</code>接收HTTP请求并找到该请求的第一个匹配路由，并将请求传递给该路由。</p>
 <p>先在pom.xml中导入Vert.x-web模块的依赖</p>

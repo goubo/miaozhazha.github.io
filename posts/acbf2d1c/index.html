@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -430,7 +430,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。<br>当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。<a id="more"></a>经过日志分析，这部分文件在使用ffprobe读取时，抛出了<code>Invalid data found when processing input</code>。老司机一看就知道，八成是读取文件信息的时候，写入还没有完成。程序在读取文件时，确定录制是已经停止的，这种小问题，加个延时应该就解决了。于是在调用读取的地方，添加了一个定时。调用停止录制2000毫秒后再读取硬盘上的文件信息。</p>
+                <p>前段时间项目有一个录制rtmp流生成文件的需求，使用ffmpeg软件录制输出本地文件，再使用ffprobe读取视频文件信息保存到数据库。<br>当时遇到一个问题，部分文件录制完后，数据库中没有保存文件信息。<span id="more"></span>经过日志分析，这部分文件在使用ffprobe读取时，抛出了<code>Invalid data found when processing input</code>。老司机一看就知道，八成是读取文件信息的时候，写入还没有完成。程序在读取文件时，确定录制是已经停止的，这种小问题，加个延时应该就解决了。于是在调用读取的地方，添加了一个定时。调用停止录制2000毫秒后再读取硬盘上的文件信息。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//发现录制应该结束</span>
 <span class="token class-name">Process</span> cmd <span class="token operator">=</span> <span class="token class-name">FFmpegProcessUtil</span><span class="token punctuation">.</span><span class="token function">getFFmpegProcessUtil</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRecord</span><span class="token punctuation">(</span>streamName<span class="token punctuation">)</span><span class="token punctuation">;</span>
 cmd<span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -438,6 +438,7 @@ vertx<span class="token punctuation">.</span><span class="token function">setTim
     <span class="token class-name">FFmpegProbeResult</span> probe <span class="token operator">=</span> <span class="token class-name">ShellUtil</span><span class="token punctuation">.</span><span class="token function">probe</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"ffprobe_path"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment">//保存文件信息</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然而周冬雨眉头一皱，发现事情并不简单。【此处应有图，原谅我图床还没选好😂😂😂】<br>前两天部门一小哥说录制文件找不到。分析日志仍然是<code>Invalid data found when processing input</code>。感觉我之前的想法确实有点简单了。<br>而且小哥分析日志后，发现读取错误的文件其实是有共同点的。<br>这个record程序的流程如下。<br>使用一个定时器，每秒钟扫描nginx-rtmp端口。发现有数据流就加载到缓存中，提供外部接口，由上层业务系统调用接口控制录制的开始和关闭。ffmpeg录制结束有两个节点。</p>
 <ol>
 <li>上层业务系统调用接口停止录制。</li>
@@ -483,6 +484,7 @@ vertx<span class="token punctuation">.</span><span class="token function">setPer
 		<span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>使用另一个定时器去查找文件，由于两个定时器同时执行，当扫描端口的定时器查询到流结束时将流标识添加到list中，本次同时执行的文件扫描定时器因为已经执行完成，所以只能在下个周期处理当前周期添加到list中的任务。本地测试后放到服务器，检验OK。</p>
 <p>代码表面的问题已经解决，但是更深入的原理的仍然困扰着我。rtmp源地址没有断的情况下，使用destroy()方法后立即查询文件详情为什么没有问题？ffmpeg为何会在handle()方法执行完成后就会停止？Runtimer执行shell的时候，Process和进程之间的关系等等。。。</p>
 <p><code>要学的东西还有很多。留个坑，以后一定会补上后面三个问题</code></p>

@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -610,6 +610,7 @@ i ==&gt; 14<span aria-hidden="true" class="line-numbers-rows"><span></span><span
  -10 &gt;&gt;&gt; 1 = 2147483643
  2147483643 = 0111 1111 1111 1111 1111 1111 1111 1011
  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>有符号右移时,高位会补符号位的值,负数右移前面会补1<br>无法好位移时,高位直接补0,负数右移后,符号位补0变正数</p>
 <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h3 id="位计算"><a href="#位计算" class="headerlink" title="位计算"></a>位计算</h3><p>位计算用的最多的应该是权限判断相关的,1个int类型,32个有效长度,可以保存32种可叠加的状态.例如linux的权限,使用3位进行保存读写执行状态,其中,1为是否可执行,2为是否可写,4为是否可读.把这三个数转换为二进制,就能发现.</p>
 <pre class="line-numbers language-bit" data-language="bit"><code class="language-bit">1  =&gt;  0001  ==  1 &lt;&lt; 0
@@ -623,6 +624,7 @@ i ==&gt; 14<span aria-hidden="true" class="line-numbers-rows"><span></span><span
         0110 = 6
 0 | 4 | 2 = 6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
 <p>linux 可读可写,不可执行权限即为6.<br>验证是否有权限,则使用与运算,判断对应位是否为1.<br>例如,文件权限为6 ,判断是否包含写权限2.</p>
 <pre class="line-numbers language-bit" data-language="bit"><code class="language-bit">    6 = 0110
     2 = 0010
@@ -635,6 +637,7 @@ i ==&gt; 14<span aria-hidden="true" class="line-numbers-rows"><span></span><span
     2 = 0010
 ^ -----------
         0100 = 4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 <p>异或运算可以用来排他计算.一个非常经典的算法题:一个int数组,长度为奇数,除一个数字外,其他的数字都是成对出现,最快找到这个数.这时就需要使用异或运算,遍历每个元素进行异或,相同得0,不同得1,结果就是最不同的孤寡蛙.</p>
 <h3 id="位移运算-1"><a href="#位移运算-1" class="headerlink" title="位移运算"></a>位移运算</h3><p>位移运算最简单的用处就是快速 乘除 2 以及2的指数.运算速度比乘除运算符要快.但是只适合整数,小数的二进制以指数方式保存,无法使用位移运算.</p>
@@ -653,6 +656,7 @@ i <span class="token operator">&amp;</span> a <span class="token operator">==</s
 <span class="token comment">//判断是否为偶数</span>
 <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">;</span> <span class="token comment">// i % 2 != 0</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
                 

@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -421,7 +421,7 @@
                 <blockquote>
 <p>jshell是Java9新增的一个实用工具。jshell为Java增加了类似NodeJS和Python中的读取-求值-打印循环（Read-Evaluation-PrintLoop）。在jshell中可以直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell都非常实用。只需要通过jshell命令启动jshell，然后直接输入表达式即可。每个表达式的结果会被自动保存下来，以数字编号作为引用，类似$1和$2这样的名称。可以在后续的表达式中引用之前语句的运行结果。在jshell中，除了表达式之外，还可以创建Java类和方法。jshell也有基本的代码完成功能。</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 <p>以上摘自<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/the-new-features-of-Java-9/index.html">ibm developerworks</a></p>
 <h2 id="启动jshell"><a href="#启动jshell" class="headerlink" title="启动jshell"></a>启动jshell</h2><p>安装jdk并配置好环境之后，在控制台输入jshell启动</p>
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">BOBOdeRMBP:~ bobo$ java -version
@@ -504,6 +504,7 @@ jshell&gt; /help
 
 jshell&gt; 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>我们使用<a href="/posts/77f46f76/" title="hello-java-9">hello-java-9</a>一文中的代码进行测试，直接使用jshell，不去创建项目，配置maven，打包运行来测试Java9语法新接口和特性。<br>首先我们先测试一下基本功能。</p>
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">jshell&gt;  System.out.println("Hello, Java 9, now I am in JShell!")
 Hello, Java 9, now I am in JShell!
@@ -575,6 +576,7 @@ jshell&gt; /e
 &lt;再次按 Tab 可查看完整文档&gt;
 
 jshell&gt; /e<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><ol>
 <li>直接创建类（这里只是演示可支持类、方法的定义，非必须。）</li>
 </ol>
@@ -660,6 +662,7 @@ jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span
 jshell&gt; testObj.add(i,j)
 5+9=14
 jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><p><code>/exit</code></p>
 <p>以上就是对jshell的简单介绍，jshell还有更多使用的功能，例如/open命令可以将文件作为输入源等等， 大家可以自己动手实验。<br>使用jshell可以快速执行一些脚本和代码，避免了建项目、打包等冗余操作，还可以快速在远端环境测试一些代码片段，能极大缩短不必要的时间浪费。</p>
 <p><code>小技巧：在shell中，按下回车会立即执行当前代码片段，而有些方法往往需要写好几行，按下shift+enter来换行</code></p>

@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -431,7 +431,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><a href="/posts/e9fa19ca">上篇文章</a> 简单介绍了一下如何使用Vert.x部署一个Verticle并创建一个http server。以及路由的试用。在部署Verticle的时候，我们使用的 <code>start()</code> 函数的重载是<code>start(Promise&lt;Void&gt;)</code>。这里的<code>Promise</code>就是Vert.x异步框架会用到的最多的一个对象（划重点）。<code>Promise</code>对象是从代码上能最直观体现Vert.x的异步非阻塞特性的。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="异步非阻塞概念"><a href="#异步非阻塞概念" class="headerlink" title="异步非阻塞概念"></a>异步非阻塞概念</h2><p>Vert.x十一个异步非阻塞的框架。如果想熟练高效使用这个最少先把异步非阻塞这两个概念搞明白。</p>
 <h2 id="同步、异步"><a href="#同步、异步" class="headerlink" title="同步、异步"></a>同步、异步</h2><p>这里的异步，主要是指消息通信机制的异步。例如一个函数调用另一个函数。如果是同步机制，<code>调用者</code>调用<code>被调用者</code>，在<code>被调用者</code>执行过程中，<code>调用者</code>主动等待这个调用，<code>被调用者</code>执行完成后返回对应结果。<br>异步调用的情况下，<code>调用者</code>调用<code>被调用者</code>后，<code>被调用者</code>执行完成后，主动通知<code>调用者</code>（回调）。<br>注意<strong>同步异步，只是针对被调用者而言，是函数返回结果的通信机制而已。</strong></p>
 <h2 id="阻塞、非阻塞"><a href="#阻塞、非阻塞" class="headerlink" title="阻塞、非阻塞"></a>阻塞、非阻塞</h2><p><strong>阻塞和非阻塞是针对线程而言的。</strong>还是这个例子，先说同步情况下。<br>如果是同步情况下，<code>调用者</code>调用函数后，当前线程就会挂起，<code>被调用者</code>开始执行，<code>被调用者</code>执行完成返回结果后，<code>调用者</code>线程再继续执行。在Main方法中随便写个最简单的函数调用就是这种。这种<code>调用者</code>线程就是阻塞的。<br>非阻塞就是在<code>调用者</code>调用一个函数后，不阻塞<code>调用者</code>当前线程，不等待<code>被调用者</code>返回，而是每隔一段时间检查<code>被调用者</code>是否完成。<br>如果是异步非阻塞。<code>调用者</code>调用对应函数后，不阻塞当前线程，不用等待函数返回。<code>被调用者</code>执行完成后再通知<code>调用者</code>，进行后续处理。</p>
@@ -461,9 +461,9 @@
 vertx<span class="token punctuation">.</span><span class="token function">setTimer</span><span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">,</span> id <span class="token operator">-&gt;</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">":3秒到了，该打印 Hello World 了"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">":3秒后打印 Hello World！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>调用setTimer方法，设置一个定时器，定时3秒后执行回调方法，打印<code>3秒到了，该打印 Hello World 了</code>，前面加一个时间戳，判断打印顺序。</p>
-<pre class="line-numbers language-log" data-language="log"><code class="language-log">2019-09-03T16:45:27.792312:设置一个timer
-2019-09-03T16:45:27.794229:3秒后打印 Hello World！
-2019-09-03T16:45:30.794139:3秒到了，该打印 Hello World 了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-log" data-language="log"><code class="language-log"><span class="token date number">2019-09-03T</span><span class="token time number">16:45:27.792312</span><span class="token operator">:</span>设置一个timer
+<span class="token date number">2019-09-03T</span><span class="token time number">16:45:27.794229</span><span class="token operator">:</span><span class="token number">3</span>秒后打印 Hello World！
+<span class="token date number">2019-09-03T</span><span class="token time number">16:45:30.794139</span><span class="token operator">:</span><span class="token number">3</span>秒到了，该打印 Hello World 了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>从输出结果可以看出，setTimer 本身就是一个异步非阻塞函数，调用timer函数，并没有阻塞当前start方法，先打印出了<code>3秒后打印 Hello World！</code>,然后3秒后，由timer方法的回调执行<code>3秒到了，该打印 Hello World 了</code>。目前我们可以用这个来模拟各种耗时操作的nio接口，比如查询数据库等。</p>
 <h3 id="异步方法"><a href="#异步方法" class="headerlink" title="异步方法"></a>异步方法</h3><p>根据前面介绍，实现一个异步方法，只要我们满足函数能立即返回调用，并且在处理完成后主动通知调用方即可。</p>
 <h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><p>Vert.x使用<code>Future</code>表示一个未知结果的调用返回。从3.8.0版本后不再直接使用，而是配合<code>Promise</code>接口使用，创建一个响应式的函数接口非常简单。</p>
@@ -488,14 +488,14 @@ vertx<span class="token punctuation">.</span><span class="token function">setTim
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"......"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>重新运行项目得到输出</p>
 <pre class="line-numbers language-log" data-language="log"><code class="language-log">开始测试getSomething
-2019-09-04T15:39:17.384836调用getSomething函数，查询一些东西，假设查询需要5秒
-2019-09-04T15:39:17.385385必须调用异步api，或者使用WorkerExecutor线程封装阻塞代码。
-2019-09-04T15:39:17.387350返回promise，调用完成，不阻塞调用线程。
+<span class="token date number">2019-09-04T</span><span class="token time number">15:39:17.384836</span>调用getSomething函数，查询一些东西，假设查询需要<span class="token number">5</span>秒
+<span class="token date number">2019-09-04T</span><span class="token time number">15:39:17.385385</span>必须调用异步api，或者使用WorkerExecutor线程封装阻塞代码。
+<span class="token date number">2019-09-04T</span><span class="token time number">15:39:17.387350</span>返回promise，调用完成，不阻塞调用线程。
 开始测试getSomething 结束，主线程不阻塞，继续执行。
-......
-2019-09-04T15:39:22.392342--------------------------
-2019-09-04T15:39:22.3924805秒后，查询完成，返回查询结果
-获取查询结果==&gt;这是查询的结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token date number">2019-09-04T</span><span class="token time number">15:39:22.392342</span><span class="token separator comment">--------------------------</span>
+<span class="token date number">2019-09-04T</span><span class="token time number">15:39:22.3924805</span>秒后，查询完成，返回查询结果
+获取查询结果<span class="token operator">=</span><span class="token operator">=</span><span class="token operator">&gt;</span>这是查询的结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="过程梳理"><a href="#过程梳理" class="headerlink" title="过程梳理"></a>过程梳理</h4><p>输出内容打印上时间戳，可以明显看出，先打印了<code>返回promise，调用完成，不阻塞调用线程</code>。并且执行了return 方法5秒后才打印<code>5秒后，查询完成，返回查询结果</code>,并且主线程在getSomething函数返回return后立即向下执行。<br><code>Promise对</code>象之前叫做<code>Future</code>，现在是<code>Promise</code>的一个属性，虽然版本升级我一个人加班改了所有的代码，不过我还是觉得这个名字更直白，方便理解。<br>调用一个异步函数，函数立即返回一个<code>Promise.future()</code>表示将来可能的结果。而不需要阻塞等待结果。等到运行完成后提交结果完成承诺；调用者在得到<code>Future</code>后绑定一个<code>Handler</code>，当<code>Promise</code>被提交的时候，运行<code>Handler</code>里的内容。<br><code>handler</code>中的参数，就是<code>Promise</code>提交的内容。细看一下<code>Promise</code>接口</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
 * Create a promise that hasn't completed yet
@@ -647,24 +647,25 @@ vertx<span class="token punctuation">.</span><span class="token function">setTim
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"......"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>输出结果</p>
-<pre class="line-numbers language-log" data-language="log"><code class="language-log">开始测试getSomething(int)
+<pre class="line-numbers language-log" data-language="log"><code class="language-log">开始测试getSomething<span class="token operator">(</span>int<span class="token operator">)</span>
 如果是调用complete方法提交，执行这里
-获取查询结果==&gt;i == 0 ,这里是直接返回的内容
-2019-09-05T15:17:21.853280调用getSomething函数，查询一些东西，假设查询需要5秒
-2019-09-05T15:17:21.853649必须调用异步api，或者使用WorkerExecutor线程封装阻塞代码。
-2019-09-05T15:17:21.855346返回promise，调用完成，不阻塞调用线程。
-2019-09-05T15:17:21.855623调用getSomething函数，查询一些东西，假设查询需要5秒
-2019-09-05T15:17:21.855675必须调用异步api，或者使用WorkerExecutor线程封装阻塞代码。
-2019-09-05T15:17:21.855741返回promise，调用完成，不阻塞调用线程。
-......
-2019-09-05T15:17:26.856019--------------------------
-2019-09-05T15:17:26.8561395秒后，查询完成，返回查询结果
+获取查询结果<span class="token operator">=</span><span class="token operator">=</span><span class="token operator">&gt;</span>i <span class="token operator">=</span><span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">,</span>这里是直接返回的内容
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:21.853280</span>调用getSomething函数，查询一些东西，假设查询需要<span class="token number">5</span>秒
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:21.853649</span>必须调用异步api，或者使用WorkerExecutor线程封装阻塞代码。
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:21.855346</span>返回promise，调用完成，不阻塞调用线程。
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:21.855623</span>调用getSomething函数，查询一些东西，假设查询需要<span class="token number">5</span>秒
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:21.855675</span>必须调用异步api，或者使用WorkerExecutor线程封装阻塞代码。
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:21.855741</span>返回promise，调用完成，不阻塞调用线程。
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:26.856019</span><span class="token separator comment">--------------------------</span>
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:26.8561395</span>秒后，查询完成，返回查询结果
 如果是调用complete方法提交，执行这里
-获取查询结果==&gt; i == 1，这里返回成功结果
-2019-09-05T15:17:26.856471--------------------------
-2019-09-05T15:17:26.8565615秒后，查询完成，返回查询结果
+获取查询结果<span class="token operator">=</span><span class="token operator">=</span><span class="token operator">&gt;</span> i <span class="token operator">=</span><span class="token operator">=</span> <span class="token number">1</span>，这里返回成功结果
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:26.856471</span><span class="token separator comment">--------------------------</span>
+<span class="token date number">2019-09-05T</span><span class="token time number">15:17:26.8565615</span>秒后，查询完成，返回查询结果
 如果是调用fail方法提交，执行这里
-查询错误是的返回信息==&gt; i == 2，这里返回失败结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+查询错误是的返回信息<span class="token operator">=</span><span class="token operator">=</span><span class="token operator">&gt;</span> i <span class="token operator">=</span><span class="token operator">=</span> <span class="token number">2</span>，这里返回失败结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>从输出结果地三行可以看出，i == 0的情况下，直接执行了handler函数。因为方法提前return，后面的代码就不用管了。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/goubo/library-management/tree/ch02">代码链接</a></p>
 <h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><p><a href="#Anchor">同步返回测试</a>代码中三个handler中的代码完全一样，可以封装简化。<br>新测试代码</p>

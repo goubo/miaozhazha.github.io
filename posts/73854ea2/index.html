@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -438,6 +438,7 @@
   <span class="token key atrule">remoteport</span><span class="token punctuation">:</span> <span class="token number">3306</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
   <span class="token key atrule">network</span><span class="token punctuation">:</span> tcp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>创建对应的结构体</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> Config <span class="token keyword">struct</span> <span class="token punctuation">{</span>
 	ProxyConfig <span class="token punctuation">[</span><span class="token punctuation">]</span>ProxyConfig
@@ -450,6 +451,7 @@
 	Enable <span class="token builtin">bool</span>
 	Network <span class="token builtin">string</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>读取配置文件</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">v <span class="token operator">:=</span> viper<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 v<span class="token punctuation">.</span><span class="token function">SetConfigFile</span><span class="token punctuation">(</span><span class="token string">"./demo.yaml"</span><span class="token punctuation">)</span>
@@ -462,6 +464,7 @@ config <span class="token operator">:=</span> Config<span class="token punctuati
 	<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="写出配置文件到指定路径"><a href="#写出配置文件到指定路径" class="headerlink" title="写出配置文件到指定路径"></a>写出配置文件到指定路径</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go">v <span class="token operator">:=</span> viper<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 v<span class="token punctuation">.</span><span class="token function">SetConfigFile</span><span class="token punctuation">(</span><span class="token string">"./demo.yaml"</span><span class="token punctuation">)</span>
 v<span class="token punctuation">.</span><span class="token function">SetConfigType</span><span class="token punctuation">(</span><span class="token string">"yaml"</span><span class="token punctuation">)</span>
@@ -474,6 +477,7 @@ v<span class="token punctuation">.</span><span class="token function">Set</span>
 <span class="token keyword">if</span> err <span class="token operator">:=</span> v<span class="token punctuation">.</span><span class="token function">WriteConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
 	<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>viper.WriteConfig() //写出文件 覆盖</li>
 <li>viper.SafeWriteConfig() // 安全写出  不覆盖,抛出异常</li>

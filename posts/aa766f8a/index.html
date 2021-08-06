@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -419,7 +419,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>前段时间换电脑，之前的部分软件需要重新激活。这里总结一下用到的软件的激活方式，以备不时之需。<br>如果有能力还请支持一下开发者。</p>
-<p><a target="_blank" rel="noopener" href="http://staruml.io/">star UML 3</a> 是一个优秀的开源uml工具，是软件设计不可少的工具，但是价格实在是劝退门槛。以前记录的激活方式不能使用了，代码封装成了asar包。查了一下资料，软件仍然使用node js开发，使用asar打包。<a id="more"></a>尝试安装asar解压,获取源码看看能不能找到</p>
+<p><a target="_blank" rel="noopener" href="http://staruml.io/">star UML 3</a> 是一个优秀的开源uml工具，是软件设计不可少的工具，但是价格实在是劝退门槛。以前记录的激活方式不能使用了，代码封装成了asar包。查了一下资料，软件仍然使用node js开发，使用asar打包。<span id="more"></span>尝试安装asar解压,获取源码看看能不能找到</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> -g asar 
 <span class="token comment"># asar使用全局安装，才能使用asar命令</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>找到代码包：<code>StarUML.app/Contents/Resources/app.asar</code><br>解压到app文件夹就获取到所有的源码</p>
@@ -601,6 +601,7 @@
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> LicenseManager
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>先看<code>validate()</code>方法，验证流程为从本地获取<code>license.key</code>文件，通过hash算法生成key串，通过post方法请求服务器，验证license是否有效。这是验证的主要方法。<br>然后还有<code>checkLicenseValidity()</code>方法，调用<code>validate()</code>方法验证，判断返回调用<code>setStatus()</code>方法，设置license状态。所以我们只要修改这个方法，让它忽视<code>validate()</code>方法的返回，始终调用<code>setStatus()</code>设置成true，应该就能绕过验证。<br>修改代码如下</p>
 <pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">checkLicenseValidity</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -611,6 +612,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后按照asar手册，再次打包代码，替换原文件</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">asar pack app app.asar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>启动实验成功<br><fancybox><br><img src="https://ro7dojex-1259053846.cos.ap-beijing.myqcloud.com/2019/08/20/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7.png"><br></fancybox></p>

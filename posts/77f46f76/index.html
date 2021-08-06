@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="数猫" type="application/atom+xml">
 </head>
@@ -418,25 +418,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>　　java9正式发布已经有一段时间了，作为一个思想<del>激进</del>__开放__，勇于探索的喵，本着拥抱新特性的心态。<del>第一时间</del>对java的文档进行了拜读，结合这段时间<del>零零散散</del>__持续__的测试和理解，记录下来以后可能会用到的几个特性。<a id="more"></a></p>
+                <p>　　java9正式发布已经有一段时间了，作为一个思想<del>激进</del>__开放__，勇于探索的喵，本着拥抱新特性的心态。<del>第一时间</del>对java的文档进行了拜读，结合这段时间<del>零零散散</del>__持续__的测试和理解，记录下来以后可能会用到的几个特性。<span id="more"></span></p>
 <h2 id="JShell"><a href="#JShell" class="headerlink" title="JShell"></a>JShell</h2><p>Java 9 中引入了交互式编程环境（REPL），这就是JShell。JShell可以执行Java代码，并且立即返回执行结果。可以用来测试一些简单的方法，函数以及算法。本喵或许可以告别创建一个Text.java然后写一个main方法来测试一些函数的做法，使用JShell可以快速地执行代码，节省了项目编译的时间。付出的代价就是需要多多练习脱离IDE码代码的技能了。<br>使用方法：安装好Java9并配置好运行环境后，在命令行输入</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">BOBOdeRMBP:~ bobo$ java -version
-java version <span class="token string">"9"</span>
-Java<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime Environment <span class="token punctuation">(</span>build <span class="token number">9</span>+181<span class="token punctuation">)</span>
-Java HotSpot<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span>-Bit Server VM <span class="token punctuation">(</span>build <span class="token number">9</span>+181, mixed mode<span class="token punctuation">)</span>
+java version "9"
+Java(TM) SE Runtime Environment (build 9+181)
+Java HotSpot(TM) 64-Bit Server VM (build 9+181, mixed mode)
 BOBOdeRMBP:~ bobo$ jshell 
-<span class="token operator">|</span>  欢迎使用 JShell -- 版本 <span class="token number">9</span>
-<span class="token operator">|</span>  要大致了解该版本, 请键入: /help intro
+|  欢迎使用 JShell -- 版本 9
+|  要大致了解该版本, 请键入: /help intro
 
-jshell<span class="token operator">&gt;</span> 
+jshell&gt; 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>即可进入JShell。<br>测试一下基本功能。声明一个int类型的变量，并未这个变量赋值。然后打印出变量信息。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jshell<span class="token operator">&gt;</span> int i <span class="token operator">=</span> <span class="token number">10</span>
-i <span class="token operator">==</span><span class="token operator">&gt;</span> <span class="token number">10</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jshell&gt; int i = 10
+i ==&gt; 10
 
-jshell<span class="token operator">&gt;</span> System.out.print<span class="token punctuation">(</span><span class="token string">"i:"</span>+i<span class="token punctuation">)</span>
+jshell&gt; System.out.print("i:"+i)
 i:10
-jshell<span class="token operator">&gt;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+jshell&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <a href="/posts/5d70e24d/" title="查看更多介绍。。。">查看更多介绍。。。</a>
 
 <h2 id="不可变集合类的工厂方法"><a href="#不可变集合类的工厂方法" class="headerlink" title="不可变集合类的工厂方法"></a>不可变集合类的工厂方法</h2><p>在处理多线程操作数据时，大多数时候数据线程安全和脏数据问题都会被掩盖。在Java8以及更早版本，我们创建一个不可变集合对象时通常使用Collections.unmodifiableXXX的方法。当我们需要初始化这样一个不可变集合的时候就显得比较麻烦了。<br>在Java9中，Oracle引用了一些非常方便的工厂方法可以用来创建各种不可变集合。</p>
@@ -525,6 +526,7 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
 
 
     <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>1.定义Dog接口抽象狗子们的行为。抽象的结果：所有狗子需要玩（play）但是表现不一样。所有狗子都会叫（barking）而且都是“汪汪汪”。<br>狗子们会伤心（sad），大部分狗子伤心都会哭（cry），个别例外。<br>2.具体实现狗子，先实现二哈Husky。二哈伤心的时候是例外，独立实现了伤心的方法。play的实现是撒欢，并且像所有狗子一样叫。然后实现金毛GoldenRetriever。金毛伤心时和大部分狗子一样会哭。play的实现是开心，并且像所有狗子一样叫。<br>叫（barking）是所有对象共有的特征，抽象成接口的静态方法，允许所有的实现内部调用。<br>伤心（sad）是大部分对象的共同特征，可以在接口抽象出默认实现，个例独立实现。<br>哭泣（cry）是内部接口抽取的公共代码，会被伤心（sad）等其它接口内部方法调用。</p>
 <p>Java9的接口允许定义</p>
 <table>
@@ -577,6 +579,7 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
 <p>dropWhile和takeWhile,废话不多说，直接上代码</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">Stream</span><span class="token punctuation">.</span><span class="token function">iterate</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">-&gt;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">,</span> i <span class="token operator">-&gt;</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>list<span class="token operator">::</span><span class="token function">add</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -600,10 +603,12 @@ list<span class="token punctuation">.</span><span class="token function">stream<
 stream <span class="token operator">=</span> <span class="token class-name">Stream</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>stream<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//jshell 执行结果 0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="改进应用安全性能"><a href="#改进应用安全性能" class="headerlink" title="改进应用安全性能"></a>改进应用安全性能</h2><p>Java9新增了4个SHA-3哈希算法，SHA3-224、SHA3-256、SHA3-384和SHA3-512。另外也增加了通过java.security.SecureRandom生成使用DRBG算法的强随机数。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">MessageDigest</span> instance <span class="token operator">=</span> <span class="token class-name">MessageDigest</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token string">"SHA3-224"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token keyword">final</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> digest <span class="token operator">=</span> instance<span class="token punctuation">.</span><span class="token function">digest</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Hex</span><span class="token punctuation">.</span><span class="token function">encodeHexString</span><span class="token punctuation">(</span>digest<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="进程API"><a href="#进程API" class="headerlink" title="进程API"></a>进程API</h2><p>Java9增加了ProcessHandle接口，可以对原生进程进行管理，尤其适合于管理长时间运行的进程。在使用ProcessBuilder来启动一个进程之后，可以通过Process.toHandle()方法来得到一个ProcessHandle对象的实例。通过ProcessHandle可以获取到由ProcessHandle.Info表示的进程的基本信息，如命令行参数、可执行文件路径和启动时间等。ProcessHandle的onExit()方法返回一个CompletableFuture<processhandle>对象，可以在进程结束时执行自定义的动作。代码清单8中给出了进程API的使用示例。</processhandle></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">ProcessBuilder</span> processBuilder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProcessBuilder</span><span class="token punctuation">(</span><span class="token string">"top"</span><span class="token punctuation">)</span> 
     <span class="token punctuation">.</span><span class="token function">inheritIO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
@@ -615,6 +620,7 @@ processHandle<span class="token punctuation">.</span><span class="token function
         throwable<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
     <span class="token punctuation">}</span> 
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>以上简单说一下Java9中语法的新特性，Java9的特性还包括Project Jigsaw(平台模块系统),http 2,I/O流新特性等等。后面本喵会逐步理解分析Java9中优秀的概念设计，希望能尽快享受Java9带来的工作便利。</p>
 
                 
